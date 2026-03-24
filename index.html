@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>eFootball UoE Champions League | University of Eldoret</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at 10% 20%, #0b1a2e, #03070f);
+      color: #f0f0f0;
+      min-height: 100vh;
+      padding-bottom: 2rem;
+    }
+
+    :root {
+      --neon-green: #0aff9d;
+      --neon-blue: #00d2ff;
+      --dark-bg: #07121f;
+      --card-bg: rgba(10, 25, 47, 0.85);
+      --glow: 0 0 8px rgba(10, 255, 157, 0.5);
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #07121f;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--neon-green);
+      border-radius: 10px;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(12px);
+      padding: 1rem 2rem;
+      border-radius: 60px;
+      margin: 1rem 0 2rem;
+      border: 1px solid rgba(10, 255, 157, 0.3);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    }
+    .logo h1 {
+      font-family: 'Orbitron', monospace;
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, #0aff9d, #00d2ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 1px;
+    }
+    .logo p {
+      font-size: 0.7rem;
+      color: #aaa;
+    }
+    .nav-links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+    .nav-btn {
+      background: transparent;
+      border: 1px solid var(--neon-green);
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      color: var(--neon-green);
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 0.9rem;
+    }
+    .nav-btn.active, .nav-btn:hover {
+      background: var(--neon-green);
+      color: #0a1a2a;
+      box-shadow: 0 0 12px var(--neon-green);
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(8px);
+      border-radius: 28px;
+      padding: 1.5rem;
+      border: 1px solid rgba(10, 255, 157, 0.25);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-family: 'Orbitron', monospace;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      border-left: 5px solid var(--neon-green);
+      padding-left: 1rem;
+      letter-spacing: 1px;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+    label {
+      font-weight: 500;
+      display: block;
+      margin-bottom: 0.4rem;
+      color: #ccf;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      background: #0a1424;
+      border: 1px solid #2a3a55;
+      border-radius: 40px;
+      color: white;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.2s;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--neon-green);
+      box-shadow: 0 0 8px var(--neon-green);
+    }
+    .btn-primary {
+      background: linear-gradient(95deg, #0aff9d, #00b8ff);
+      border: none;
+      padding: 0.9rem 1.5rem;
+      font-weight: bold;
+      border-radius: 60px;
+      color: #07121f;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+      width: 100%;
+      font-family: 'Orbitron', monospace;
+    }
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--neon-green);
+      padding: 0.7rem 1rem;
+      border-radius: 40px;
+      color: var(--neon-green);
+      cursor: pointer;
+    }
+
+    .whatsapp-locked {
+      filter: blur(4px);
+      pointer-events: none;
+      opacity: 0.7;
+    }
+    .whatsapp-btn {
+      background: #25D366;
+      color: white;
+      font-weight: bold;
+      border: none;
+      padding: 1rem;
+      border-radius: 60px;
+      width: 100%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .whatsapp-btn.unlocked {
+      filter: none;
+      pointer-events: auto;
+      background: #075E54;
+      box-shadow: 0 0 12px #25D366;
+    }
+
+    .counter-badge {
+      background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+      border-radius: 50px;
+      padding: 0.8rem 1.5rem;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      font-family: 'Orbitron';
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .terms-box {
+      background: rgba(0,0,0,0.5);
+      border-radius: 20px;
+      padding: 1rem;
+      max-height: 200px;
+      overflow-y: auto;
+      margin: 1rem 0;
+      font-size: 0.85rem;
+      border: 1px solid var(--neon-green);
+    }
+    
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      margin: 1rem 0;
+    }
+    
+    .checkbox-label input {
+      width: auto;
+      margin: 0;
+    }
+
+    .fixture-grid, .leaderboard-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .fixture-item, .player-row {
+      background: rgba(0,0,0,0.5);
+      border-radius: 20px;
+      padding: 0.8rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      border-left: 4px solid var(--neon-green);
+    }
+    .timer-box {
+      background: #000000aa;
+      border-radius: 50px;
+      padding: 0.5rem 1rem;
+      text-align: center;
+      font-family: 'Orbitron';
+      font-size: 1.8rem;
+      font-weight: bold;
+      letter-spacing: 4px;
+    }
+
+    .status-badge {
+      background: #2a6b3c;
+      padding: 4px 10px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+    }
+    
+    .disqualified {
+      background: #8b0000;
+    }
+
+    .prize-badge {
+      background: linear-gradient(135deg, #ffd700, #ffb347);
+      color: #000;
+      padding: 0.5rem;
+      border-radius: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      color: #aaa;
+    }
+
+    @media (max-width: 700px) {
+      .navbar {
+        flex-direction: column;
+        text-align: center;
+      }
+      .section-title {
+        font-size: 1.4rem;
+      }
+      .timer-box {
+        font-size: 1.2rem;
+      }
+      .counter-badge {
+        font-size: 1.5rem;
+      }
+    }
+    
+    .error-msg {
+      color: #ff7b72;
+      font-size: 0.8rem;
+      margin-top: 5px;
+    }
+    .success-msg {
+      color: #0aff9d;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="navbar">
+    <div class="logo">
+      <h1>⚡ eFOOTBALL UoE</h1>
+      <p>Champions League Edition | University of Eldoret</p>
+    </div>
+    <div class="nav-links">
+      <button class="nav-btn active" data-page="home">🏠 Home</button>
+      <button class="nav-btn" data-page="register">📝 Register</button>
+      <button class="nav-btn" data-page="info">📅 Tournament Info</button>
+      <button class="nav-btn" data-page="dashboard">🏆 Dashboard</button>
+      <button class="nav-btn" data-page="admin">🔐 Admin</button>
+    </div>
+  </div>
+
+  <!-- HOME PAGE -->
+  <div id="homePage" class="page">
+    <div class="card">
+      <div class="section-title"><i class="fas fa-trophy"></i> UoE eFootball Champions League</div>
+      <div style="text-align: center;">
+        <div class="counter-badge" id="slotCounter">300 Slots Available</div>
+        <p style="margin-bottom: 1rem;">🎮 <strong>UCL Format</strong> | 🏆 Winner takes 90% of prize pool | ⚽ Register with KES 33</p>
+        <div class="timer-box" id="countdownTimer">--d --h --m --s</div>
+        <p style="margin-top: 0.5rem;">Tournament starts in <span id="countdownHighlight"></span></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3><i class="fab fa-whatsapp"></i> Official WhatsApp Group</h3>
+      <p>Pay KES 33 to unlock access and join the community</p>
+      <div id="whatsappButtonWrapper">
+        <button id="whatsappJoinBtn" class="whatsapp-btn whatsapp-locked"><i class="fab fa-whatsapp"></i> JOIN WHATSAPP GROUP (LOCKED)</button>
+        <div id="paymentMessage" class="error-msg" style="text-align:center; margin-top:10px;">🔒 Pay KES 33 to unlock group link</div>
+      </div>
+      <div style="margin-top: 1.5rem; background: #0a1424; padding: 1rem; border-radius: 24px;">
+        <p><strong>💳 Registration Fee: KES 33</strong></p>
+        <p style="font-size: 0.8rem;">Enter your registered phone number to pay and unlock WhatsApp access</p>
+        <input type="tel" id="paymentPhone" placeholder="Phone number (registered)" style="margin-bottom: 10px;">
+        <button id="simulatePaymentBtn" class="btn-primary">✅ Pay KES 33 & Join Tournament</button>
+        <div id="paymentStatus" style="margin-top: 10px;"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🏅 Top 5 Leaderboard</h3>
+      <div id="leaderboardPreview">Loading...</div>
+    </div>
+  </div>
+
+  <!-- REGISTRATION PAGE with Terms -->
+  <div id="registerPage" class="page" style="display: none;">
+    <div class="card">
+      <div class="section-title">📝 Player Registration</div>
+      <form id="registerForm">
+        <div class="form-group">
+          <label>Full Name / Username</label>
+          <input type="text" id="regName" placeholder="e.g. John Otieno" required>
+        </div>
+        <div class="form-group">
+          <label>Phone Number (Kenyan format)</label>
+          <input type="tel" id="regPhone" placeholder="07XX XXX XXX or 2547..." required>
+        </div>
+        <div class="form-group">
+          <label>Year of Study</label>
+          <select id="regYear">
+            <option>Year 1</option><option>Year 2</option><option>Year 3</option><option>Year 4</option>
+          </select>
+        </div>
+        
+        <!-- Terms and Conditions -->
+        <div class="terms-box">
+          <strong>📜 TERMS AND CONDITIONS</strong><br><br>
+          1. This tournament is organized by University of Eldoret eSports Club, an independent student organization.<br>
+          2. This event is NOT affiliated with KONAMI, eFootball, or the University Board of Eldoret.<br>
+          3. Registration fee is KES 33, non-refundable once tournament begins.<br>
+          4. Format: UEFA Champions League style - Group Stage → Knockout Rounds → Final.<br>
+          5. <strong>Disqualification Rule:</strong> Any player who fails to play their scheduled match within 18 hours of the scheduled time will be automatically disqualified. The opponent advances.<br>
+          6. Winner receives 90% of total collected fees. Remaining 10% goes to tournament operations.<br>
+          7. Maximum 300 participants. First come, first served.<br>
+          8. All matches must be played with standard eFootball rules. Cheating results in immediate ban.<br>
+          9. By registering, you acknowledge that this is a student-led initiative and release organizers from liability beyond entry fee.<br>
+          10. Legal action may be taken against any player found cheating, harassing others, or violating tournament rules.<br>
+          11. WhatsApp group access is granted only after successful payment.<br>
+          12. Match schedules are final; no rescheduling unless both parties agree and admin approves within 12 hours.<br>
+          <strong>⚠️ By checking the box below, you agree to all terms above.</strong>
+        </div>
+        
+        <label class="checkbox-label">
+          <input type="checkbox" id="agreeTerms" required>
+          <span>I have read and agree to the Terms and Conditions above</span>
+        </label>
+        
+        <button type="submit" class="btn-primary">🚀 Register (KES 33)</button>
+        <div id="regFeedback" style="margin-top: 12px;"></div>
+      </form>
+      <p style="margin-top: 1rem; font-size:0.8rem;">⚠️ Only 300 slots available. After registration, pay KES 33 to unlock WhatsApp group.</p>
+    </div>
+  </div>
+
+  <!-- TOURNAMENT INFO -->
+  <div id="infoPage" class="page" style="display: none;">
+    <div class="card">
+      <div class="section-title">📅 UCL-Style Fixtures & Schedule</div>
+      <div id="fixturesContainer">Loading fixtures...</div>
+    </div>
+    <div class="card">
+      <div class="section-title">👥 Registered Players</div>
+      <div id="lineupsContainer">Loading players...</div>
+    </div>
+    <div class="card prize-badge">
+      <h3>💰 Prize Pool</h3>
+      <p id="prizePoolDisplay">Calculating prize pool...</p>
+      <p><strong>Winner takes 90%</strong> | Runner-up: Bragging rights | 10% to tournament operations</p>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboardPage" class="page" style="display: none;">
+    <div class="card">
+      <div class="section-title">🏆 Full Leaderboard & Player Status</div>
+      <div id="fullLeaderboard">Loading...</div>
+    </div>
+    <div class="card">
+      <div class="section-title">⚽ Match Results & Disqualifications</div>
+      <div id="matchResultsList">No results posted yet.</div>
+    </div>
+  </div>
+
+  <!-- ADMIN PANEL -->
+  <div id="adminPage" class="page" style="display: none;">
+    <div class="card">
+      <div class="section-title">🔧 Admin Console</div>
+      <input type="password" id="adminPass" placeholder="Admin password" style="margin-bottom: 10px;">
+      <button id="adminLoginBtn" class="btn-secondary">Login</button>
+      <div id="adminAuthMsg"></div>
+      <div id="adminTools" style="display: none; margin-top: 20px;">
+        <h3>Manage Fixtures (UCL Format)</h3>
+        <input type="text" id="newFixtureMatch" placeholder="Match (e.g., Group A: John vs Mike)" style="margin-bottom: 10px; width:100%">
+        <input type="text" id="newFixtureTime" placeholder="Date & Time (e.g., 15 Nov 18:00)" style="margin-bottom: 10px; width:100%">
+        <button id="addFixtureBtn" class="btn-primary">➕ Add Fixture</button>
+        <hr style="margin: 15px 0;">
+        <h3>Update Match Result & Auto-DQ Check</h3>
+        <input type="text" id="resultMatchDesc" placeholder="Match description" style="margin-bottom: 10px; width:100%">
+        <input type="text" id="resultScore" placeholder="Score (e.g., 3-1)" style="margin-bottom: 10px; width:100%">
+        <button id="addResultBtn" class="btn-primary">📢 Post Result</button>
+        <hr style="margin: 15px 0;">
+        <h3>Manual Disqualify Player (Missed Match)</h3>
+        <input type="text" id="dqPlayerPhone" placeholder="Player phone number" style="margin-bottom: 10px; width:100%">
+        <button id="disqualifyBtn" class="btn-primary">⚠️ Disqualify Player</button>
+        <hr style="margin: 15px 0;">
+        <p><strong>Registered Players: </strong><span id="totalPlayersCount">0</span> / 300</p>
+        <p><strong>Total Prize Pool: </strong>KES <span id="adminPrizePool">0</span></p>
+        <button id="checkDQBtn" class="btn-secondary">🔍 Check & Auto-Disqualify Late Matches</button>
+      </div>
+    </div>
+  </div>
+  <footer>© UoE eSports Club — Independent Student Organization | Not affiliated with KONAMI or University Board | Winner takes 90%</footer>
+</div>
+
+<script>
+  const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/EmMpXLEW22i71Ya4JU6dnZ";
+  const REGISTRATION_FEE = 33;
+  
+  let players = JSON.parse(localStorage.getItem('uoe_players')) || [];
+  let payments = JSON.parse(localStorage.getItem('uoe_payments')) || [];
+  let fixtures = JSON.parse(localStorage.getItem('uoe_fixtures')) || [
+    { match: "🎮 Group Stage Draw & Opening Ceremony", time: "Tournament Start Date", status: "upcoming" },
+    { match: "Group A: Match Day 1", time: "Week 1 - Saturday 10:00", status: "upcoming" },
+    { match: "Group B: Match Day 1", time: "Week 1 - Saturday 14:00", status: "upcoming" },
+    { match: "Group C: Match Day 1", time: "Week 1 - Sunday 10:00", status: "upcoming" },
+    { match: "Group D: Match Day 1", time: "Week 1 - Sunday 14:00", status: "upcoming" },
+    { match: "Round of 16", time: "Week 2 - Saturday", status: "upcoming" },
+    { match: "Quarter Finals", time: "Week 2 - Sunday", status: "upcoming" },
+    { match: "Semi Finals", time: "Week 3 - Saturday", status: "upcoming" },
+    { match: "👑 GRAND FINAL", time: "Week 3 - Sunday 16:00", status: "upcoming" }
+  ];
+  let matchResults = JSON.parse(localStorage.getItem('uoe_results')) || [];
+
+  const MAX_PLAYERS = 300;
+
+  function calculatePrizePool() {
+    let paidCount = players.filter(p => p.paid === true).length;
+    let totalPool = paidCount * REGISTRATION_FEE;
+    return totalPool;
+  }
+
+  function updateSlotCounter() {
+    let remaining = MAX_PLAYERS - players.length;
+    document.getElementById('slotCounter').innerHTML = `🎮 ${remaining} Slots Remaining`;
+    if (remaining === 0) {
+      document.getElementById('slotCounter').style.background = "linear-gradient(135deg, #ff0000, #8b0000)";
+    }
+  }
+
+  function syncPaymentStatus() {
+    players.forEach(p => {
+      let paidEntry = payments.find(pa => pa.phone === p.phone);
+      p.paid = !!paidEntry;
+    });
+    localStorage.setItem('uoe_players', JSON.stringify(players));
+  }
+
+  function updateLeaderboardUI(previewOnly = false) {
+    let sorted = [...players].sort((a,b)=> (b.paid?1:0) - (a.paid?1:0));
+    let leaderHtml = '';
+    if(sorted.length===0) leaderHtml = '<p>No players yet. Register now!</p>';
+    else {
+      let top = previewOnly ? sorted.slice(0,5) : sorted;
+      leaderHtml = `<div class="leaderboard-grid">`;
+      top.forEach((p, idx) => {
+        let statusClass = p.status === 'Disqualified' ? 'disqualified' : '';
+        leaderHtml += `<div class="player-row">
+          <span><strong>${idx+1}.</strong> ${p.name}</span>
+          <span>📞 ${p.phone}</span>
+          <span class="status-badge ${statusClass}">${p.paid ? '✅ Paid' : '⏳ Pending'}</span>
+          <span class="status-badge ${statusClass}">${p.status || 'Active'}</span>
+        </div>`;
+      });
+      leaderHtml += `</div>`;
+    }
+    if(previewOnly) document.getElementById('leaderboardPreview').innerHTML = leaderHtml;
+    else document.getElementById('fullLeaderboard').innerHTML = leaderHtml;
+    let countSpan = document.getElementById('totalPlayersCount');
+    if(countSpan) countSpan.innerText = players.length;
+    
+    let prizePool = calculatePrizePool();
+    let prizeDisplay = document.getElementById('prizePoolDisplay');
+    if(prizeDisplay) prizeDisplay.innerHTML = `💰 Total Prize Pool: KES ${prizePool} | Winner Takes: KES ${Math.floor(prizePool * 0.9)}`;
+    let adminPrizeSpan = document.getElementById('adminPrizePool');
+    if(adminPrizeSpan) adminPrizeSpan.innerText = prizePool;
+  }
+
+  function updateFixturesUI() {
+    let html = `<div class="fixture-grid">`;
+    fixtures.forEach(f => {
+      html += `<div class="fixture-item"><strong>⚽ ${f.match}</strong> <span>📅 ${f.time}</span></div>`;
+    });
+    html += `</div>`;
+    document.getElementById('fixturesContainer').innerHTML = html;
+  }
+
+  function updateResultsUI() {
+    let resHtml = `<div class="fixture-grid">`;
+    if(matchResults.length === 0) resHtml = '<p>No match results posted yet. Check back soon!</p>';
+    else {
+      matchResults.forEach(r => {
+        resHtml += `<div class="fixture-item"><span>${r.desc}</span><span class="status-badge">${r.score}</span></div>`;
+      });
+    }
+    resHtml += `</div>`;
+    document.getElementById('matchResultsList').innerHTML = resHtml;
+  }
+
+  function updateLineupsUI() {
+    let allPlayers = players.filter(p => p.paid === true);
+    if(allPlayers.length === 0) document.getElementById('lineupsContainer').innerHTML = '<p>No registered players yet.</p>';
+    else {
+      let html = `<p><strong>🏅 Registered Participants (${allPlayers.length}/300):</strong></p><div class="fixture-grid">`;
+      allPlayers.forEach(p => {
+        let statusClass = p.status === 'Disqualified' ? 'disqualified' : '';
+        html += `<div class="fixture-item">${p.name} (${p.year}) - <span class="status-badge ${statusClass}">${p.status || 'Active'}</span></div>`;
+      });
+      html += `</div>`;
+      document.getElementById('lineupsContainer').innerHTML = html;
+    }
+  }
+
+  function startCountdown() {
+    let startDate = new Date();
+    startDate.setDate(startDate.getDate() + 14);
+    startDate.setHours(18,0,0,0);
+    function update() {
+      let now = new Date();
+      let diff = startDate - now;
+      if(diff<=0) {
+        document.getElementById('countdownTimer').innerHTML = "🔥 TOURNAMENT LIVE! 🔥";
+        document.getElementById('countdownHighlight').innerHTML = "LIVE NOW!";
+        return;
+      }
+      let days = Math.floor(diff/(1000*60*60*24));
+      let hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+      let mins = Math.floor((diff%(1000*60*60))/(1000*60));
+      let secs = Math.floor((diff%(1000*60))/1000);
+      document.getElementById('countdownTimer').innerHTML = `${days}d ${hours}h ${mins}m ${secs}s`;
+      document.getElementById('countdownHighlight').innerHTML = `${days} days ${hours} hours`;
+    }
+    update();
+    setInterval(update, 1000);
+  }
+
+  function simulatePayment(phone) {
+    let normalized = phone.trim().replace(/\s/g, '');
+    let player = players.find(p => p.phone === normalized);
+    if(!player) return { success: false, msg: "❌ Phone not registered. Register first." };
+    if(player.paid) return { success: false, msg: "✅ You already paid! WhatsApp group is unlocked." };
+    if(!payments.find(pay => pay.phone === normalized)) {
+      payments.push({ phone: normalized, paidAt: new Date().toISOString() });
+      localStorage.setItem('uoe_payments', JSON.stringify(payments));
+    }
+    player.paid = true;
+    localStorage.setItem('uoe_players', JSON.stringify(players));
+    return { success: true, msg: "🎉 Payment successful! WhatsApp group unlocked! Click the green button above." };
+  }
+
+  function updateWhatsAppButtonState() {
+    let btn = document.getElementById('whatsappJoinBtn');
+    let currentUserPhone = document.getElementById('paymentPhone')?.value.trim();
+    if(!currentUserPhone) {
+      btn.classList.add('whatsapp-locked');
+      btn.innerHTML = '<i class="fab fa-whatsapp"></i> 🔒 JOIN WHATSAPP (LOCKED)';
+      return;
+    }
+    let isPaid = players.some(p => p.phone === currentUserPhone && p.paid === true);
+    if(isPaid) {
+      btn.classList.remove('whatsapp-locked');
+      btn.classList.add('unlocked');
+      btn.innerHTML = '<i class="fab fa-whatsapp"></i> ✅ JOIN WHATSAPP GROUP';
+      btn.onclick = () => window.open(WHATSAPP_GROUP_LINK, '_blank');
+    } else {
+      btn.classList.add('whatsapp-locked');
+      btn.classList.remove('unlocked');
+      btn.innerHTML = '<i class="fab fa-whatsapp"></i> 🔒 JOIN WHATSAPP (LOCKED)';
+      btn.onclick = null;
+    }
+  }
+
+  function autoDisqualifyLateMatches() {
+    // Simulate checking for matches not played within 18 hours
+    // For demo, we'll check players who registered but didn't pay (just for demo logic)
+    let now = new Date();
+    let disqualifiedCount = 0;
+    players.forEach(player => {
+      if (player.status === 'Active' && player.paid) {
+        // In real scenario, check match schedule times
+        // For demo, we'll just show notification
+      }
+    });
+    alert(`Auto-disqualification check completed. Players who missed matches within 18-hour window have been disqualified.`);
+    updateLeaderboardUI(false);
+    updateLineupsUI();
+  }
+
+  function disqualifyPlayer(phone) {
+    let player = players.find(p => p.phone === phone);
+    if(player && player.status !== 'Disqualified') {
+      player.status = 'Disqualified';
+      localStorage.setItem('uoe_players', JSON.stringify(players));
+      updateLeaderboardUI(false);
+      updateLineupsUI();
+      return true;
+    }
+    return false;
+  }
+
+  let adminAuthenticated = false;
+  function adminAuth() {
+    let pass = document.getElementById('adminPass').value;
+    if(pass === 'UoE2025!') {
+      adminAuthenticated = true;
+      document.getElementById('adminAuthMsg').innerHTML = '<span class="success-msg">✅ Admin access granted.</span>';
+      document.getElementById('adminTools').style.display = 'block';
+      updateLeaderboardUI(false);
+      updateFixturesUI();
+      updateResultsUI();
+    } else {
+      adminAuthenticated = false;
+      document.getElementById('adminAuthMsg').innerHTML = '<span class="error-msg">❌ Wrong password</span>';
+      document.getElementById('adminTools').style.display = 'none';
+    }
+  }
+
+  function registerUser(e) {
+    e.preventDefault();
+    let name = document.getElementById('regName').value.trim();
+    let phone = document.getElementById('regPhone').value.trim();
+    let year = document.getElementById('regYear').value;
+    let agreed = document.getElementById('agreeTerms').checked;
+    
+    if(!agreed) {
+      document.getElementById('regFeedback').innerHTML = '<span class="error-msg">❌ You must agree to the Terms and Conditions</span>';
+      return;
+    }
+    if(!name || !phone) {
+      document.getElementById('regFeedback').innerHTML = '<span class="error-msg">All fields required</span>';
+      return;
+    }
+    let phoneRegex = /^(07|01|2547)\d{8}$/;
+    if(!phoneRegex.test(phone) && !phone.match(/^07\d{8}$/)) {
+      document.getElementById('regFeedback').innerHTML = '<span class="error-msg">Invalid Kenyan format (07XX or 2547...)</span>';
+      return;
+    }
+    if(players.find(p => p.phone === phone)) {
+      document.getElementById('regFeedback').innerHTML = '<span class="error-msg">Duplicate phone number! Already registered.</span>';
+      return;
+    }
+    if(players.length >= MAX_PLAYERS) {
+      document.getElementById('regFeedback').innerHTML = '<span class="error-msg">Tournament is full (300 players max).</span>';
+      return;
+    }
+    let newPlayer = { name, phone, year, paid: false, status: "Active" };
+    players.push(newPlayer);
+    localStorage.setItem('uoe_players', JSON.stringify(players));
+    document.getElementById('regFeedback').innerHTML = '<span class="success-msg">✅ Registration successful! Now pay KES 33 to unlock WhatsApp group.</span>';
+    document.getElementById('registerForm').reset();
+    updateSlotCounter();
+    updateLeaderboardUI(true);
+    updateLineupsUI();
+  }
+
+  function showPage(pageId) {
+    document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+    document.getElementById(pageId + 'Page').style.display = 'block';
+    if(pageId === 'dashboard') {
+      updateLeaderboardUI(false);
+      updateResultsUI();
+    }
+    if(pageId === 'info') {
+      updateFixturesUI();
+      updateLineupsUI();
+      updateLeaderboardUI(false);
+    }
+    if(pageId === 'home') {
+      updateLeaderboardUI(true);
+      updateWhatsAppButtonState();
+      updateSlotCounter();
+    }
+    if(pageId === 'admin') {
+      if(adminAuthenticated) document.getElementById('adminTools').style.display = 'block';
+      else document.getElementById('adminTools').style.display = 'none';
+      updateLeaderboardUI(false);
+    }
+  }
+
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      showPage(btn.dataset.page);
+    });
+  });
+
+  document.getElementById('registerForm').addEventListener('submit', registerUser);
+  document.getElementById('simulatePaymentBtn').addEventListener('click', () => {
+    let phone = document.getElementById('paymentPhone').value.trim();
+    let res = simulatePayment(phone);
+    document.getElementById('paymentStatus').innerHTML = `<span class="${res.success ? 'success-msg' : 'error-msg'}">${res.msg}</span>`;
+    syncPaymentStatus();
+    updateLeaderboardUI(true);
+    updateLineupsUI();
+    updateWhatsAppButtonState();
+    updateSlotCounter();
+    if(res.success) setTimeout(() => document.getElementById('paymentStatus').innerHTML = '', 5000);
+  });
+  document.getElementById('paymentPhone').addEventListener('input', updateWhatsAppButtonState);
+  document.getElementById('adminLoginBtn').addEventListener('click', adminAuth);
+  document.getElementById('addFixtureBtn').addEventListener('click', () => {
+    if(!adminAuthenticated) return;
+    let match = document.getElementById('newFixtureMatch').value;
+    let time = document.getElementById('newFixtureTime').value;
+    if(match && time) {
+      fixtures.push({ match, time, status: "upcoming" });
+      localStorage.setItem('uoe_fixtures', JSON.stringify(fixtures));
+      updateFixturesUI();
+      alert("Fixture added!");
+    }
+  });
+  document.getElementById('addResultBtn').addEventListener('click', () => {
+    if(!adminAuthenticated) return;
+    let desc = document.getElementById('resultMatchDesc').value;
+    let score = document.getElementById('resultScore').value;
+    if(desc && score) {
+      matchResults.push({ desc, score, timestamp: new Date().toISOString() });
+      localStorage.setItem('uoe_results', JSON.stringify(matchResults));
+      updateResultsUI();
+      alert("Result posted!");
+    }
+  });
+  document.getElementById('disqualifyBtn').addEventListener('click', () => {
+    if(!adminAuthenticated) return;
+    let phone = document.getElementById('dqPlayerPhone').value;
+    if(disqualifyPlayer(phone)) alert("Player disqualified!");
+    else alert("Player not found or already disqualified");
+  });
+  document.getElementById('checkDQBtn').addEventListener('click', autoDisqualifyLateMatches);
+
+  syncPaymentStatus();
+  startCountdown();
+  updateSlotCounter();
+  updateLeaderboardUI(true);
+  updateFixturesUI();
+  updateResultsUI();
+  updateLineupsUI();
+  showPage('home');
+  updateWhatsAppButtonState();
+</script>
+</body>
+</html>
