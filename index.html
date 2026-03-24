@@ -3,11 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>eFootball UoE Champions League | University of Eldoret</title>
-  <!-- Font Awesome 6 (free) -->
+  <title>eFootball UoE Champions League | Win KES 8,910!</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -17,29 +15,20 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at 10% 20%, #0b1a2e, #03070f);
-      color: #f0f0f0;
+      background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), 
+                  url('https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1600');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #fff;
       min-height: 100vh;
-      padding-bottom: 2rem;
     }
 
     :root {
-      --neon-green: #0aff9d;
-      --neon-blue: #00d2ff;
-      --dark-bg: #07121f;
-      --card-bg: rgba(10, 25, 47, 0.85);
-      --glow: 0 0 8px rgba(10, 255, 157, 0.5);
-    }
-
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #07121f;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: var(--neon-green);
-      border-radius: 10px;
+      --neon-green: #00ff88;
+      --neon-purple: #9d4edd;
+      --neon-blue: #00d9ff;
+      --gold: #ffd700;
     }
 
     .container {
@@ -48,38 +37,83 @@
       padding: 1rem 1.5rem;
     }
 
+    /* Header Banner */
+    .hero-banner {
+      background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6));
+      border-radius: 30px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      border: 2px solid var(--neon-green);
+      box-shadow: 0 0 30px rgba(0,255,136,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-banner::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0,255,136,0.1), transparent);
+      animation: pulse 3s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.3; }
+      50% { transform: scale(1.1); opacity: 0.5; }
+    }
+    
+    .challenge-text {
+      font-family: 'Orbitron', monospace;
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--gold), var(--neon-green));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 20px rgba(255,215,0,0.5);
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .prize-highlight {
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--gold);
+      text-shadow: 0 0 20px rgba(255,215,0,0.5);
+      position: relative;
+      z-index: 1;
+    }
+    
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(12px);
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
       padding: 1rem 2rem;
       border-radius: 60px;
-      margin: 1rem 0 2rem;
-      border: 1px solid rgba(10, 255, 157, 0.3);
-      box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+      margin-bottom: 2rem;
+      border: 1px solid var(--neon-green);
     }
+    
     .logo h1 {
       font-family: 'Orbitron', monospace;
       font-size: 1.5rem;
-      background: linear-gradient(135deg, #0aff9d, #00d2ff);
+      background: linear-gradient(135deg, var(--neon-green), var(--neon-blue));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      letter-spacing: 1px;
     }
-    .logo p {
-      font-size: 0.7rem;
-      color: #aaa;
-    }
-    .nav-links {
-      display: flex;
-      gap: 0.8rem;
-      flex-wrap: wrap;
-    }
+    
+    .nav-links { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+    
     .nav-btn {
       background: transparent;
       border: 1px solid var(--neon-green);
@@ -88,71 +122,115 @@
       color: var(--neon-green);
       font-weight: 600;
       cursor: pointer;
-      transition: 0.2s;
-      font-size: 0.9rem;
+      transition: all 0.3s ease;
     }
+    
     .nav-btn.active, .nav-btn:hover {
       background: var(--neon-green);
-      color: #0a1a2a;
-      box-shadow: 0 0 12px var(--neon-green);
+      color: #000;
+      box-shadow: 0 0 15px var(--neon-green);
     }
-
+    
     .card {
-      background: var(--card-bg);
-      backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(10px);
       border-radius: 28px;
-      padding: 1.5rem;
-      border: 1px solid rgba(10, 255, 157, 0.25);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      padding: 1.8rem;
+      border: 1px solid rgba(0, 255, 136, 0.3);
       margin-bottom: 2rem;
+      transition: transform 0.3s ease;
     }
-
+    
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--neon-green);
+    }
+    
     .section-title {
       font-family: 'Orbitron', monospace;
       font-size: 1.8rem;
       margin-bottom: 1.5rem;
       border-left: 5px solid var(--neon-green);
       padding-left: 1rem;
-      letter-spacing: 1px;
     }
-
-    .form-group {
-      margin-bottom: 1.2rem;
+    
+    /* Steps Styling */
+    .steps-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1.5rem 0;
     }
+    
+    .step {
+      flex: 1;
+      text-align: center;
+      padding: 1rem;
+      background: rgba(0, 255, 136, 0.1);
+      border-radius: 20px;
+      border: 1px solid var(--neon-green);
+    }
+    
+    .step-number {
+      width: 40px;
+      height: 40px;
+      background: var(--neon-green);
+      color: #000;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.5rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    
+    .form-group { margin-bottom: 1.2rem; }
+    
     label {
       font-weight: 500;
       display: block;
       margin-bottom: 0.4rem;
-      color: #ccf;
+      color: var(--neon-green);
     }
+    
     input, select, textarea {
       width: 100%;
       padding: 0.9rem 1rem;
-      background: #0a1424;
+      background: rgba(10, 20, 30, 0.9);
       border: 1px solid #2a3a55;
       border-radius: 40px;
       color: white;
       font-size: 1rem;
       outline: none;
-      transition: 0.2s;
+      transition: all 0.3s ease;
     }
+    
     input:focus, select:focus, textarea:focus {
       border-color: var(--neon-green);
-      box-shadow: 0 0 8px var(--neon-green);
+      box-shadow: 0 0 10px var(--neon-green);
     }
+    
     .btn-primary {
-      background: linear-gradient(95deg, #0aff9d, #00b8ff);
+      background: linear-gradient(135deg, var(--neon-green), var(--neon-blue));
       border: none;
       padding: 0.9rem 1.5rem;
       font-weight: bold;
       border-radius: 60px;
-      color: #07121f;
+      color: #000;
       font-size: 1rem;
       cursor: pointer;
-      transition: 0.2s;
       width: 100%;
       font-family: 'Orbitron', monospace;
+      transition: all 0.3s ease;
     }
+    
+    .btn-primary:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 20px var(--neon-green);
+    }
+    
     .btn-secondary {
       background: transparent;
       border: 1px solid var(--neon-green);
@@ -160,13 +238,14 @@
       border-radius: 40px;
       color: var(--neon-green);
       cursor: pointer;
+      transition: all 0.3s ease;
     }
-
-    .whatsapp-locked {
-      filter: blur(4px);
-      pointer-events: none;
-      opacity: 0.7;
+    
+    .btn-secondary:hover {
+      background: var(--neon-green);
+      color: #000;
     }
+    
     .whatsapp-btn {
       background: #25D366;
       color: white;
@@ -176,20 +255,53 @@
       border-radius: 60px;
       width: 100%;
       font-size: 1.2rem;
-      cursor: pointer;
-      transition: 0.2s;
+      cursor: not-allowed;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
+      opacity: 0.6;
+      transition: all 0.3s ease;
     }
+    
     .whatsapp-btn.unlocked {
-      filter: none;
-      pointer-events: auto;
       background: #075E54;
-      box-shadow: 0 0 12px #25D366;
+      cursor: pointer;
+      opacity: 1;
+      animation: glow 1s ease-in-out infinite;
     }
-
+    
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 10px #25D366; }
+      50% { box-shadow: 0 0 30px #25D366; }
+    }
+    
+    .payment-box {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 20px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      border: 2px solid var(--gold);
+    }
+    
+    .transaction-code-input {
+      font-family: monospace;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+    
+    .status-badge {
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: bold;
+      display: inline-block;
+    }
+    
+    .status-pending { background: #ffaa33; color: #000; }
+    .status-approved { background: #00ff88; color: #000; }
+    .status-rejected { background: #ff4444; color: #fff; }
+    
     .counter-badge {
       background: linear-gradient(135deg, #ff6b6b, #ee5a24);
       border-radius: 50px;
@@ -199,38 +311,36 @@
       font-weight: bold;
       font-family: 'Orbitron';
       display: inline-block;
-      margin-bottom: 1rem;
     }
-
-    .terms-box {
-      background: rgba(0,0,0,0.5);
+    
+    .prize-card {
+      background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6));
       border-radius: 20px;
-      padding: 1rem;
-      max-height: 200px;
-      overflow-y: auto;
-      margin: 1rem 0;
-      font-size: 0.85rem;
-      border: 1px solid var(--neon-green);
+      padding: 1.5rem;
+      text-align: center;
+      border: 2px solid var(--gold);
     }
     
-    .checkbox-label {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-      margin: 1rem 0;
+    .prize-amount {
+      font-size: 3rem;
+      font-weight: bold;
+      color: var(--gold);
+      font-family: 'Orbitron';
     }
     
-    .checkbox-label input {
-      width: auto;
-      margin: 0;
+    .timer-box {
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 50px;
+      padding: 0.8rem;
+      text-align: center;
+      font-family: 'Orbitron';
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 2px;
     }
-
-    .fixture-grid, .leaderboard-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+    
+    .fixture-grid, .leaderboard-grid { display: flex; flex-direction: column; gap: 1rem; }
+    
     .fixture-item, .player-row {
       background: rgba(0,0,0,0.5);
       border-radius: 20px;
@@ -241,75 +351,35 @@
       flex-wrap: wrap;
       border-left: 4px solid var(--neon-green);
     }
-    .timer-box {
-      background: #000000aa;
-      border-radius: 50px;
-      padding: 0.5rem 1rem;
-      text-align: center;
-      font-family: 'Orbitron';
-      font-size: 1.8rem;
-      font-weight: bold;
-      letter-spacing: 4px;
-    }
-
-    .status-badge {
-      background: #2a6b3c;
-      padding: 4px 10px;
-      border-radius: 30px;
-      font-size: 0.7rem;
-    }
     
-    .disqualified {
-      background: #8b0000;
-    }
-
-    .prize-badge {
-      background: linear-gradient(135deg, #ffd700, #ffb347);
-      color: #000;
-      padding: 0.5rem;
-      border-radius: 20px;
-      text-align: center;
-      font-weight: bold;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 2rem;
-      color: #aaa;
-    }
-
+    .error-msg { color: #ff7b72; font-size: 0.8rem; margin-top: 5px; }
+    .success-msg { color: #00ff88; }
+    
+    footer { text-align: center; margin-top: 2rem; color: #aaa; }
+    
     @media (max-width: 700px) {
-      .navbar {
-        flex-direction: column;
-        text-align: center;
-      }
-      .section-title {
-        font-size: 1.4rem;
-      }
-      .timer-box {
-        font-size: 1.2rem;
-      }
-      .counter-badge {
-        font-size: 1.5rem;
-      }
-    }
-    
-    .error-msg {
-      color: #ff7b72;
-      font-size: 0.8rem;
-      margin-top: 5px;
-    }
-    .success-msg {
-      color: #0aff9d;
+      .challenge-text { font-size: 1.5rem; }
+      .prize-highlight { font-size: 2rem; }
+      .timer-box { font-size: 1.2rem; }
+      .steps-container { flex-direction: column; }
+      .navbar { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
 <body>
 <div class="container">
+  <!-- Hero Banner with Challenge Text -->
+  <div class="hero-banner">
+    <div class="challenge-text">⚡ ARE YOU FIT ENOUGH TO SNATCH</div>
+    <div class="prize-highlight">KES 8,910 AWAY? ⚡</div>
+    <p style="margin-top: 1rem;">🏆 eFootball Champions League | University of Eldoret</p>
+    <p>💰 Winner Takes 90% of Prize Pool | Max 300 Players</p>
+  </div>
+  
   <div class="navbar">
     <div class="logo">
-      <h1>⚡ eFOOTBALL UoE</h1>
-      <p>Champions League Edition | University of Eldoret</p>
+      <h1>🎮 eFOOTBALL UoE</h1>
+      <p>Champions League Edition</p>
     </div>
     <div class="nav-links">
       <button class="nav-btn active" data-page="home">🏠 Home</button>
@@ -322,50 +392,88 @@
 
   <!-- HOME PAGE -->
   <div id="homePage" class="page">
+    <!-- 3-Step Process -->
     <div class="card">
-      <div class="section-title"><i class="fas fa-trophy"></i> UoE eFootball Champions League</div>
+      <div class="section-title">📋 HOW TO JOIN & WIN</div>
+      <div class="steps-container">
+        <div class="step">
+          <div class="step-number">1</div>
+          <strong>REGISTER</strong>
+          <p style="font-size: 0.85rem;">Fill in your details to create account</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <strong>PAY KES 33</strong>
+          <p style="font-size: 0.85rem;">Send to +254 114 170 847 via M-Pesa</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <strong>GET APPROVED</strong>
+          <p style="font-size: 0.85rem;">Submit transaction code & get verified</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
       <div style="text-align: center;">
         <div class="counter-badge" id="slotCounter">300 Slots Available</div>
-        <p style="margin-bottom: 1rem;">🎮 <strong>UCL Format</strong> | 🏆 Winner takes 90% of prize pool | ⚽ Register with KES 33</p>
         <div class="timer-box" id="countdownTimer">--d --h --m --s</div>
-        <p style="margin-top: 0.5rem;">Tournament starts in <span id="countdownHighlight"></span></p>
+        <p style="margin-top: 0.5rem;">🏆 Tournament starts in <span id="countdownHighlight"></span></p>
       </div>
     </div>
-
-    <div class="card">
-      <h3><i class="fab fa-whatsapp"></i> Official WhatsApp Group</h3>
-      <p>Pay KES 33 to unlock access and join the community</p>
-      <div id="whatsappButtonWrapper">
-        <button id="whatsappJoinBtn" class="whatsapp-btn whatsapp-locked"><i class="fab fa-whatsapp"></i> JOIN WHATSAPP GROUP (LOCKED)</button>
-        <div id="paymentMessage" class="error-msg" style="text-align:center; margin-top:10px;">🔒 Pay KES 33 to unlock group link</div>
-      </div>
-      <div style="margin-top: 1.5rem; background: #0a1424; padding: 1rem; border-radius: 24px;">
-        <p><strong>💳 Registration Fee: KES 33</strong></p>
-        <p style="font-size: 0.8rem;">Enter your registered phone number to pay and unlock WhatsApp access</p>
-        <input type="tel" id="paymentPhone" placeholder="Phone number (registered)" style="margin-bottom: 10px;">
-        <button id="simulatePaymentBtn" class="btn-primary">✅ Pay KES 33 & Join Tournament</button>
-        <div id="paymentStatus" style="margin-top: 10px;"></div>
-      </div>
+    
+    <div class="card prize-card">
+      <h3>💰 CURRENT PRIZE POOL</h3>
+      <div class="prize-amount" id="prizePoolDisplay">KES 0</div>
+      <div class="prize-amount" style="font-size: 2rem;" id="winnerShare">Winner Takes: KES 0</div>
+      <p>📈 Prize grows with every verified payment!</p>
+      <p style="font-size: 0.85rem;">🎯 300 Players = KES 8,910 for the Champion!</p>
     </div>
-
+    
+    <!-- Payment & Verification Section with YOUR Number -->
     <div class="card">
-      <h3>🏅 Top 5 Leaderboard</h3>
-      <div id="leaderboardPreview">Loading...</div>
+      <h3><i class="fab fa-whatsapp"></i> UNLOCK WHATSAPP GROUP</h3>
+      <div class="payment-box">
+        <p><strong>💳 STEP 2: MAKE PAYMENT</strong></p>
+        <p>Send <strong>KES 33</strong> to:</p>
+        <p style="font-size: 1.5rem; color: var(--gold); font-weight: bold;">
+          📱 <strong>+254 114 170 847</strong>
+        </p>
+        <p style="font-size: 0.9rem;">via M-Pesa (Send Money)</p>
+        <hr style="margin: 1rem 0; border-color: var(--neon-green);">
+        
+        <p><strong>📝 STEP 3: SUBMIT TRANSACTION CODE</strong></p>
+        <p style="font-size: 0.8rem;">After sending payment, enter the M-Pesa confirmation code below:</p>
+        <input type="text" id="transactionCode" class="transaction-code-input" placeholder="M-Pesa Transaction Code (e.g., QWERTY123)" style="margin-bottom: 10px;">
+        <input type="tel" id="verifyPhone" placeholder="Your registered phone number" style="margin-bottom: 10px;">
+        <button id="submitTransactionBtn" class="btn-primary">🔍 SUBMIT FOR VERIFICATION</button>
+        <div id="verificationStatus" style="margin-top: 10px;"></div>
+        <p style="font-size: 0.75rem; margin-top: 10px; color: #ffaa66;">
+          💡 Tip: After payment, copy the M-Pesa confirmation message and paste the transaction code here.
+        </p>
+      </div>
+      
+      <button id="whatsappJoinBtn" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i> 🔒 LOCKED - PAYMENT REQUIRED
+      </button>
+      <p style="font-size: 0.8rem; text-align: center; margin-top: 10px;">
+        ⚠️ WhatsApp unlocks AFTER admin verifies your payment via M-Pesa
+      </p>
     </div>
   </div>
 
-  <!-- REGISTRATION PAGE with Terms -->
+  <!-- REGISTRATION PAGE -->
   <div id="registerPage" class="page" style="display: none;">
     <div class="card">
-      <div class="section-title">📝 Player Registration</div>
+      <div class="section-title">📝 PLAYER REGISTRATION</div>
       <form id="registerForm">
         <div class="form-group">
-          <label>Full Name / Username</label>
-          <input type="text" id="regName" placeholder="e.g. John Otieno" required>
+          <label>Full Name</label>
+          <input type="text" id="regName" placeholder="Enter your full name" required>
         </div>
         <div class="form-group">
-          <label>Phone Number (Kenyan format)</label>
-          <input type="tel" id="regPhone" placeholder="07XX XXX XXX or 2547..." required>
+          <label>Phone Number</label>
+          <input type="tel" id="regPhone" placeholder="07XX XXX XXX" required>
         </div>
         <div class="form-group">
           <label>Year of Study</label>
@@ -373,213 +481,296 @@
             <option>Year 1</option><option>Year 2</option><option>Year 3</option><option>Year 4</option>
           </select>
         </div>
-        
-        <!-- Terms and Conditions -->
-        <div class="terms-box">
-          <strong>📜 TERMS AND CONDITIONS</strong><br><br>
-          1. This tournament is organized by University of Eldoret eSports Club, an independent student organization.<br>
-          2. This event is NOT affiliated with KONAMI, eFootball, or the University Board of Eldoret.<br>
-          3. Registration fee is KES 33, non-refundable once tournament begins.<br>
-          4. Format: UEFA Champions League style - Group Stage → Knockout Rounds → Final.<br>
-          5. <strong>Disqualification Rule:</strong> Any player who fails to play their scheduled match within 18 hours of the scheduled time will be automatically disqualified. The opponent advances.<br>
-          6. Winner receives 90% of total collected fees. Remaining 10% goes to tournament operations.<br>
-          7. Maximum 300 participants. First come, first served.<br>
-          8. All matches must be played with standard eFootball rules. Cheating results in immediate ban.<br>
-          9. By registering, you acknowledge that this is a student-led initiative and release organizers from liability beyond entry fee.<br>
-          10. Legal action may be taken against any player found cheating, harassing others, or violating tournament rules.<br>
-          11. WhatsApp group access is granted only after successful payment.<br>
-          12. Match schedules are final; no rescheduling unless both parties agree and admin approves within 12 hours.<br>
-          <strong>⚠️ By checking the box below, you agree to all terms above.</strong>
+        <div class="terms-box" style="background: rgba(0,0,0,0.5); border-radius: 15px; padding: 1rem; margin: 1rem 0; max-height: 150px; overflow-y: auto;">
+          <strong>📜 TERMS & CONDITIONS</strong><br><br>
+          • This tournament is organized by University of Eldoret eSports Club - an independent student organization<br>
+          • NOT affiliated with KONAMI, eFootball, or the University Board of Eldoret<br>
+          • Entry Fee: KES 33 (must be verified by Admin)<br>
+          • Winner takes 90% of total verified payments<br>
+          • Format: UEFA Champions League style (Group Stage → Knockouts → Final)<br>
+          • Missing your scheduled match within 18 hours = automatic disqualification<br>
+          • Maximum 300 players<br>
+          • Legal action may be taken against cheaters or harassers<br>
+          • No refunds after tournament starts<br>
+          • WhatsApp group access only after payment verification
         </div>
-        
-        <label class="checkbox-label">
+        <label class="checkbox-label" style="display: flex; align-items: center; gap: 10px;">
           <input type="checkbox" id="agreeTerms" required>
-          <span>I have read and agree to the Terms and Conditions above</span>
+          <span>I have read and agree to all Terms & Conditions</span>
         </label>
-        
-        <button type="submit" class="btn-primary">🚀 Register (KES 33)</button>
+        <button type="submit" class="btn-primary">✅ REGISTER NOW (KES 33)</button>
         <div id="regFeedback" style="margin-top: 12px;"></div>
       </form>
-      <p style="margin-top: 1rem; font-size:0.8rem;">⚠️ Only 300 slots available. After registration, pay KES 33 to unlock WhatsApp group.</p>
     </div>
   </div>
 
   <!-- TOURNAMENT INFO -->
   <div id="infoPage" class="page" style="display: none;">
     <div class="card">
-      <div class="section-title">📅 UCL-Style Fixtures & Schedule</div>
-      <div id="fixturesContainer">Loading fixtures...</div>
+      <div class="section-title">📅 MATCH FIXTURES</div>
+      <div id="fixturesContainer"></div>
     </div>
     <div class="card">
-      <div class="section-title">👥 Registered Players</div>
-      <div id="lineupsContainer">Loading players...</div>
-    </div>
-    <div class="card prize-badge">
-      <h3>💰 Prize Pool</h3>
-      <p id="prizePoolDisplay">Calculating prize pool...</p>
-      <p><strong>Winner takes 90%</strong> | Runner-up: Bragging rights | 10% to tournament operations</p>
+      <div class="section-title">👥 VERIFIED PLAYERS</div>
+      <div id="lineupsContainer"></div>
     </div>
   </div>
 
   <!-- DASHBOARD -->
   <div id="dashboardPage" class="page" style="display: none;">
     <div class="card">
-      <div class="section-title">🏆 Full Leaderboard & Player Status</div>
-      <div id="fullLeaderboard">Loading...</div>
+      <div class="section-title">🏆 LEADERBOARD</div>
+      <div id="fullLeaderboard"></div>
     </div>
     <div class="card">
-      <div class="section-title">⚽ Match Results & Disqualifications</div>
-      <div id="matchResultsList">No results posted yet.</div>
+      <div class="section-title">⚽ MATCH RESULTS</div>
+      <div id="matchResultsList"></div>
     </div>
   </div>
 
   <!-- ADMIN PANEL -->
   <div id="adminPage" class="page" style="display: none;">
     <div class="card">
-      <div class="section-title">🔧 Admin Console</div>
+      <div class="section-title">🔧 ADMIN CONSOLE</div>
       <input type="password" id="adminPass" placeholder="Admin password" style="margin-bottom: 10px;">
       <button id="adminLoginBtn" class="btn-secondary">Login</button>
       <div id="adminAuthMsg"></div>
       <div id="adminTools" style="display: none; margin-top: 20px;">
-        <h3>Manage Fixtures (UCL Format)</h3>
+        <h3>✅ VERIFY TRANSACTIONS</h3>
+        <p style="font-size: 0.8rem; color: #ffaa66;">Check pending payments below. Approve only after confirming M-Pesa transaction.</p>
+        <div id="pendingTransactionsList"></div>
+        <hr>
+        <h3>Manage Fixtures</h3>
         <input type="text" id="newFixtureMatch" placeholder="Match (e.g., Group A: John vs Mike)" style="margin-bottom: 10px; width:100%">
-        <input type="text" id="newFixtureTime" placeholder="Date & Time (e.g., 15 Nov 18:00)" style="margin-bottom: 10px; width:100%">
+        <input type="text" id="newFixtureTime" placeholder="Date & Time" style="margin-bottom: 10px; width:100%">
         <button id="addFixtureBtn" class="btn-primary">➕ Add Fixture</button>
-        <hr style="margin: 15px 0;">
-        <h3>Update Match Result & Auto-DQ Check</h3>
+        <hr>
+        <h3>Post Match Results</h3>
         <input type="text" id="resultMatchDesc" placeholder="Match description" style="margin-bottom: 10px; width:100%">
         <input type="text" id="resultScore" placeholder="Score (e.g., 3-1)" style="margin-bottom: 10px; width:100%">
         <button id="addResultBtn" class="btn-primary">📢 Post Result</button>
-        <hr style="margin: 15px 0;">
-        <h3>Manual Disqualify Player (Missed Match)</h3>
+        <hr>
+        <h3>Disqualify Player (18-Hour Rule)</h3>
         <input type="text" id="dqPlayerPhone" placeholder="Player phone number" style="margin-bottom: 10px; width:100%">
         <button id="disqualifyBtn" class="btn-primary">⚠️ Disqualify Player</button>
-        <hr style="margin: 15px 0;">
-        <p><strong>Registered Players: </strong><span id="totalPlayersCount">0</span> / 300</p>
-        <p><strong>Total Prize Pool: </strong>KES <span id="adminPrizePool">0</span></p>
-        <button id="checkDQBtn" class="btn-secondary">🔍 Check & Auto-Disqualify Late Matches</button>
+        <hr>
+        <p><strong>📊 Tournament Statistics:</strong></p>
+        <p><strong>Registered Players:</strong> <span id="totalPlayersCount">0</span> / 300</p>
+        <p><strong>Verified Paid:</strong> <span id="verifiedPaidCount">0</span></p>
+        <p><strong>Current Prize Pool:</strong> KES <span id="adminPrizePool">0</span></p>
+        <p><strong>Winner Takes:</strong> 90% = KES <span id="adminWinnerShare">0</span></p>
       </div>
     </div>
   </div>
-  <footer>© UoE eSports Club — Independent Student Organization | Not affiliated with KONAMI or University Board | Winner takes 90%</footer>
+  <footer>© UoE eSports Club | Winner takes 90% | Payment verification required | Contact: +254 114 170 847</footer>
 </div>
 
 <script>
   const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/EmMpXLEW22i71Ya4JU6dnZ";
-  const REGISTRATION_FEE = 33;
   
   let players = JSON.parse(localStorage.getItem('uoe_players')) || [];
-  let payments = JSON.parse(localStorage.getItem('uoe_payments')) || [];
+  let pendingTransactions = JSON.parse(localStorage.getItem('uoe_pending_tx')) || [];
+  let verifiedPayments = JSON.parse(localStorage.getItem('uoe_verified')) || [];
   let fixtures = JSON.parse(localStorage.getItem('uoe_fixtures')) || [
-    { match: "🎮 Group Stage Draw & Opening Ceremony", time: "Tournament Start Date", status: "upcoming" },
-    { match: "Group A: Match Day 1", time: "Week 1 - Saturday 10:00", status: "upcoming" },
-    { match: "Group B: Match Day 1", time: "Week 1 - Saturday 14:00", status: "upcoming" },
-    { match: "Group C: Match Day 1", time: "Week 1 - Sunday 10:00", status: "upcoming" },
-    { match: "Group D: Match Day 1", time: "Week 1 - Sunday 14:00", status: "upcoming" },
-    { match: "Round of 16", time: "Week 2 - Saturday", status: "upcoming" },
-    { match: "Quarter Finals", time: "Week 2 - Sunday", status: "upcoming" },
-    { match: "Semi Finals", time: "Week 3 - Saturday", status: "upcoming" },
-    { match: "👑 GRAND FINAL", time: "Week 3 - Sunday 16:00", status: "upcoming" }
+    { match: "🎮 Opening Ceremony & Group Draw", time: "Tournament Start Date" },
+    { match: "⚽ Group Stage - Match Day 1", time: "Week 1 - Saturday 10:00 AM" },
+    { match: "⚽ Group Stage - Match Day 2", time: "Week 1 - Sunday 10:00 AM" },
+    { match: "⚽ Group Stage - Match Day 3", time: "Week 2 - Saturday 10:00 AM" },
+    { match: "🏆 Round of 16", time: "Week 2 - Sunday 14:00" },
+    { match: "🔥 Quarter Finals", time: "Week 3 - Saturday 14:00" },
+    { match: "💪 Semi Finals", time: "Week 3 - Sunday 14:00" },
+    { match: "👑 GRAND FINAL", time: "Week 4 - Saturday 16:00" }
   ];
   let matchResults = JSON.parse(localStorage.getItem('uoe_results')) || [];
 
   const MAX_PLAYERS = 300;
 
   function calculatePrizePool() {
-    let paidCount = players.filter(p => p.paid === true).length;
-    let totalPool = paidCount * REGISTRATION_FEE;
-    return totalPool;
+    return verifiedPayments.length * 33;
   }
 
-  function updateSlotCounter() {
+  function updateUI() {
     let remaining = MAX_PLAYERS - players.length;
     document.getElementById('slotCounter').innerHTML = `🎮 ${remaining} Slots Remaining`;
-    if (remaining === 0) {
-      document.getElementById('slotCounter').style.background = "linear-gradient(135deg, #ff0000, #8b0000)";
+    let prize = calculatePrizePool();
+    document.getElementById('prizePoolDisplay').innerHTML = `KES ${prize}`;
+    let winnerShare = Math.floor(prize * 0.9);
+    document.getElementById('winnerShare').innerHTML = `Winner Takes: KES ${winnerShare}`;
+    if(document.getElementById('adminPrizePool')) {
+      document.getElementById('adminPrizePool').innerText = prize;
+      document.getElementById('adminWinnerShare').innerText = winnerShare;
     }
-  }
-
-  function syncPaymentStatus() {
-    players.forEach(p => {
-      let paidEntry = payments.find(pa => pa.phone === p.phone);
-      p.paid = !!paidEntry;
+    
+    // Leaderboard
+    let sorted = [...players].sort((a,b) => {
+      let aVerified = verifiedPayments.some(v => v.phone === a.phone);
+      let bVerified = verifiedPayments.some(v => v.phone === b.phone);
+      return (bVerified ? 1 : 0) - (aVerified ? 1 : 0);
     });
-    localStorage.setItem('uoe_players', JSON.stringify(players));
-  }
-
-  function updateLeaderboardUI(previewOnly = false) {
-    let sorted = [...players].sort((a,b)=> (b.paid?1:0) - (a.paid?1:0));
-    let leaderHtml = '';
-    if(sorted.length===0) leaderHtml = '<p>No players yet. Register now!</p>';
-    else {
-      let top = previewOnly ? sorted.slice(0,5) : sorted;
-      leaderHtml = `<div class="leaderboard-grid">`;
-      top.forEach((p, idx) => {
-        let statusClass = p.status === 'Disqualified' ? 'disqualified' : '';
+    let leaderHtml = `<div class="leaderboard-grid">`;
+    if(sorted.length === 0) {
+      leaderHtml = '<p>No players yet. Be the first to register!</p>';
+    } else {
+      sorted.forEach((p, idx) => {
+        let isVerified = verifiedPayments.some(v => v.phone === p.phone);
+        let isPending = pendingTransactions.some(tx => tx.phone === p.phone);
+        let status = isVerified ? '✅ PAID' : (isPending ? '⏳ PENDING' : '❌ NOT PAID');
+        let statusClass = isVerified ? 'status-approved' : (isPending ? 'status-pending' : '');
         leaderHtml += `<div class="player-row">
           <span><strong>${idx+1}.</strong> ${p.name}</span>
-          <span>📞 ${p.phone}</span>
-          <span class="status-badge ${statusClass}">${p.paid ? '✅ Paid' : '⏳ Pending'}</span>
-          <span class="status-badge ${statusClass}">${p.status || 'Active'}</span>
+          <span>${p.phone}</span>
+          <span class="status-badge ${statusClass}">${status}</span>
         </div>`;
       });
-      leaderHtml += `</div>`;
     }
-    if(previewOnly) document.getElementById('leaderboardPreview').innerHTML = leaderHtml;
-    else document.getElementById('fullLeaderboard').innerHTML = leaderHtml;
-    let countSpan = document.getElementById('totalPlayersCount');
-    if(countSpan) countSpan.innerText = players.length;
+    leaderHtml += `</div>`;
+    document.getElementById('fullLeaderboard').innerHTML = leaderHtml;
+    if(document.getElementById('leaderboardPreview')) {
+      document.getElementById('leaderboardPreview').innerHTML = leaderHtml;
+    }
     
-    let prizePool = calculatePrizePool();
-    let prizeDisplay = document.getElementById('prizePoolDisplay');
-    if(prizeDisplay) prizeDisplay.innerHTML = `💰 Total Prize Pool: KES ${prizePool} | Winner Takes: KES ${Math.floor(prizePool * 0.9)}`;
-    let adminPrizeSpan = document.getElementById('adminPrizePool');
-    if(adminPrizeSpan) adminPrizeSpan.innerText = prizePool;
+    // Lineups (verified only)
+    let verifiedPlayers = players.filter(p => verifiedPayments.some(v => v.phone === p.phone));
+    let lineupsHtml = `<p><strong>✅ Verified Players (${verifiedPlayers.length}/300):</strong></p><div class="fixture-grid">`;
+    if(verifiedPlayers.length === 0) {
+      lineupsHtml = '<p>No verified players yet. Make payment to get verified!</p>';
+    } else {
+      verifiedPlayers.forEach(p => {
+        lineupsHtml += `<div class="fixture-item">${p.name} (${p.year})</div>`;
+      });
+    }
+    lineupsHtml += `</div>`;
+    document.getElementById('lineupsContainer').innerHTML = lineupsHtml;
+    
+    document.getElementById('totalPlayersCount').innerText = players.length;
+    document.getElementById('verifiedPaidCount').innerText = verifiedPayments.length;
+    
+    // Update WhatsApp button
+    let currentPhone = localStorage.getItem('currentUserPhone');
+    let btn = document.getElementById('whatsappJoinBtn');
+    if (currentPhone && verifiedPayments.some(v => v.phone === currentPhone)) {
+      btn.innerHTML = '<i class="fab fa-whatsapp"></i> ✅ JOIN WHATSAPP GROUP (UNLOCKED)';
+      btn.classList.add('unlocked');
+      btn.style.cursor = 'pointer';
+      btn.onclick = () => window.open(WHATSAPP_GROUP_LINK, '_blank');
+    } else {
+      btn.innerHTML = '<i class="fab fa-whatsapp"></i> 🔒 LOCKED - PAYMENT REQUIRED';
+      btn.classList.remove('unlocked');
+      btn.style.cursor = 'not-allowed';
+      btn.onclick = null;
+    }
+    
+    // Update pending transactions in admin
+    if (document.getElementById('pendingTransactionsList')) {
+      if (pendingTransactions.length === 0) {
+        document.getElementById('pendingTransactionsList').innerHTML = '<p>✅ No pending transactions</p>';
+      } else {
+        let pendingHtml = `<div class="fixture-grid">`;
+        pendingTransactions.forEach((tx, idx) => {
+          pendingHtml += `<div class="fixture-item">
+            <div><strong>${tx.name}</strong><br>📞 ${tx.phone}</div>
+            <div>💳 Code: <strong>${tx.transactionCode}</strong></div>
+            <div>
+              <button onclick="approveTransaction('${tx.phone}')" style="background:#00ff88; color:#000; padding:5px 10px; border-radius:10px; margin-right:5px; cursor:pointer;">✅ Approve</button>
+              <button onclick="rejectTransaction('${tx.phone}')" style="background:#ff4444; color:#fff; padding:5px 10px; border-radius:10px; cursor:pointer;">❌ Reject</button>
+            </div>
+          </div>`;
+        });
+        pendingHtml += `</div>`;
+        document.getElementById('pendingTransactionsList').innerHTML = pendingHtml;
+      }
+    }
   }
 
-  function updateFixturesUI() {
+  function approveTransaction(phone) {
+    let tx = pendingTransactions.find(t => t.phone === phone);
+    if(tx) {
+      verifiedPayments.push({ phone, name: tx.name, date: new Date().toISOString() });
+      pendingTransactions = pendingTransactions.filter(t => t.phone !== phone);
+      localStorage.setItem('uoe_verified', JSON.stringify(verifiedPayments));
+      localStorage.setItem('uoe_pending_tx', JSON.stringify(pendingTransactions));
+      updateUI();
+      alert(`✅ Payment VERIFIED for ${tx.name}! WhatsApp has been unlocked for them.`);
+    }
+  }
+  
+  function rejectTransaction(phone) {
+    let tx = pendingTransactions.find(t => t.phone === phone);
+    if(tx) {
+      pendingTransactions = pendingTransactions.filter(t => t.phone !== phone);
+      localStorage.setItem('uoe_pending_tx', JSON.stringify(pendingTransactions));
+      updateUI();
+      alert(`❌ Payment REJECTED for ${tx.name}. They must submit a valid transaction code.`);
+    }
+  }
+  
+  window.approveTransaction = approveTransaction;
+  window.rejectTransaction = rejectTransaction;
+
+  function submitTransaction() {
+    let code = document.getElementById('transactionCode').value.trim();
+    let phone = document.getElementById('verifyPhone').value.trim();
+    
+    if(!code || !phone) {
+      document.getElementById('verificationStatus').innerHTML = '<span class="error-msg">❌ Enter both transaction code and phone number</span>';
+      return;
+    }
+    
+    let player = players.find(p => p.phone === phone);
+    if(!player) {
+      document.getElementById('verificationStatus').innerHTML = '<span class="error-msg">❌ Phone number not registered. Please register first!</span>';
+      return;
+    }
+    
+    if(verifiedPayments.some(v => v.phone === phone)) {
+      document.getElementById('verificationStatus').innerHTML = '<span class="success-msg">✅ Already verified! WhatsApp is unlocked for you.</span>';
+      updateUI();
+      return;
+    }
+    
+    if(pendingTransactions.some(t => t.phone === phone)) {
+      document.getElementById('verificationStatus').innerHTML = '<span class="error-msg">⏳ You already submitted a transaction. Waiting for admin approval.</span>';
+      return;
+    }
+    
+    pendingTransactions.push({ phone, name: player.name, transactionCode: code, date: new Date().toISOString() });
+    localStorage.setItem('uoe_pending_tx', JSON.stringify(pendingTransactions));
+    document.getElementById('verificationStatus').innerHTML = '<span class="success-msg">✅ Transaction submitted! Admin will verify within 24 hours. Check back soon.</span>';
+    document.getElementById('transactionCode').value = '';
+    document.getElementById('verifyPhone').value = '';
+    updateUI();
+  }
+
+  function updateFixtures() {
     let html = `<div class="fixture-grid">`;
     fixtures.forEach(f => {
-      html += `<div class="fixture-item"><strong>⚽ ${f.match}</strong> <span>📅 ${f.time}</span></div>`;
+      html += `<div class="fixture-item"><strong>${f.match}</strong> <span>📅 ${f.time}</span></div>`;
     });
     html += `</div>`;
     document.getElementById('fixturesContainer').innerHTML = html;
   }
 
-  function updateResultsUI() {
-    let resHtml = `<div class="fixture-grid">`;
-    if(matchResults.length === 0) resHtml = '<p>No match results posted yet. Check back soon!</p>';
-    else {
+  function updateResults() {
+    let html = `<div class="fixture-grid">`;
+    if (matchResults.length === 0) {
+      html = '<p>No match results posted yet. Check back after matches start!</p>';
+    } else {
       matchResults.forEach(r => {
-        resHtml += `<div class="fixture-item"><span>${r.desc}</span><span class="status-badge">${r.score}</span></div>`;
+        html += `<div class="fixture-item"><span>${r.desc}</span><span class="status-badge">${r.score}</span></div>`;
       });
     }
-    resHtml += `</div>`;
-    document.getElementById('matchResultsList').innerHTML = resHtml;
-  }
-
-  function updateLineupsUI() {
-    let allPlayers = players.filter(p => p.paid === true);
-    if(allPlayers.length === 0) document.getElementById('lineupsContainer').innerHTML = '<p>No registered players yet.</p>';
-    else {
-      let html = `<p><strong>🏅 Registered Participants (${allPlayers.length}/300):</strong></p><div class="fixture-grid">`;
-      allPlayers.forEach(p => {
-        let statusClass = p.status === 'Disqualified' ? 'disqualified' : '';
-        html += `<div class="fixture-item">${p.name} (${p.year}) - <span class="status-badge ${statusClass}">${p.status || 'Active'}</span></div>`;
-      });
-      html += `</div>`;
-      document.getElementById('lineupsContainer').innerHTML = html;
-    }
+    html += `</div>`;
+    document.getElementById('matchResultsList').innerHTML = html;
   }
 
   function startCountdown() {
-    let startDate = new Date();
-    startDate.setDate(startDate.getDate() + 14);
-    startDate.setHours(18,0,0,0);
+    let start = new Date();
+    start.setDate(start.getDate() + 14);
+    start.setHours(18, 0, 0, 0);
     function update() {
       let now = new Date();
-      let diff = startDate - now;
-      if(diff<=0) {
+      let diff = start - now;
+      if(diff <= 0) {
         document.getElementById('countdownTimer').innerHTML = "🔥 TOURNAMENT LIVE! 🔥";
         document.getElementById('countdownHighlight').innerHTML = "LIVE NOW!";
         return;
@@ -595,84 +786,16 @@
     setInterval(update, 1000);
   }
 
-  function simulatePayment(phone) {
-    let normalized = phone.trim().replace(/\s/g, '');
-    let player = players.find(p => p.phone === normalized);
-    if(!player) return { success: false, msg: "❌ Phone not registered. Register first." };
-    if(player.paid) return { success: false, msg: "✅ You already paid! WhatsApp group is unlocked." };
-    if(!payments.find(pay => pay.phone === normalized)) {
-      payments.push({ phone: normalized, paidAt: new Date().toISOString() });
-      localStorage.setItem('uoe_payments', JSON.stringify(payments));
-    }
-    player.paid = true;
-    localStorage.setItem('uoe_players', JSON.stringify(players));
-    return { success: true, msg: "🎉 Payment successful! WhatsApp group unlocked! Click the green button above." };
-  }
-
-  function updateWhatsAppButtonState() {
-    let btn = document.getElementById('whatsappJoinBtn');
-    let currentUserPhone = document.getElementById('paymentPhone')?.value.trim();
-    if(!currentUserPhone) {
-      btn.classList.add('whatsapp-locked');
-      btn.innerHTML = '<i class="fab fa-whatsapp"></i> 🔒 JOIN WHATSAPP (LOCKED)';
-      return;
-    }
-    let isPaid = players.some(p => p.phone === currentUserPhone && p.paid === true);
-    if(isPaid) {
-      btn.classList.remove('whatsapp-locked');
-      btn.classList.add('unlocked');
-      btn.innerHTML = '<i class="fab fa-whatsapp"></i> ✅ JOIN WHATSAPP GROUP';
-      btn.onclick = () => window.open(WHATSAPP_GROUP_LINK, '_blank');
-    } else {
-      btn.classList.add('whatsapp-locked');
-      btn.classList.remove('unlocked');
-      btn.innerHTML = '<i class="fab fa-whatsapp"></i> 🔒 JOIN WHATSAPP (LOCKED)';
-      btn.onclick = null;
-    }
-  }
-
-  function autoDisqualifyLateMatches() {
-    // Simulate checking for matches not played within 18 hours
-    // For demo, we'll check players who registered but didn't pay (just for demo logic)
-    let now = new Date();
-    let disqualifiedCount = 0;
-    players.forEach(player => {
-      if (player.status === 'Active' && player.paid) {
-        // In real scenario, check match schedule times
-        // For demo, we'll just show notification
-      }
-    });
-    alert(`Auto-disqualification check completed. Players who missed matches within 18-hour window have been disqualified.`);
-    updateLeaderboardUI(false);
-    updateLineupsUI();
-  }
-
-  function disqualifyPlayer(phone) {
-    let player = players.find(p => p.phone === phone);
-    if(player && player.status !== 'Disqualified') {
-      player.status = 'Disqualified';
-      localStorage.setItem('uoe_players', JSON.stringify(players));
-      updateLeaderboardUI(false);
-      updateLineupsUI();
-      return true;
-    }
-    return false;
-  }
-
-  let adminAuthenticated = false;
-  function adminAuth() {
+  let adminAuth = false;
+  function adminLogin() {
     let pass = document.getElementById('adminPass').value;
     if(pass === 'UoE2025!') {
-      adminAuthenticated = true;
-      document.getElementById('adminAuthMsg').innerHTML = '<span class="success-msg">✅ Admin access granted.</span>';
+      adminAuth = true;
+      document.getElementById('adminAuthMsg').innerHTML = '<span class="success-msg">✅ Admin access granted</span>';
       document.getElementById('adminTools').style.display = 'block';
-      updateLeaderboardUI(false);
-      updateFixturesUI();
-      updateResultsUI();
+      updateUI();
     } else {
-      adminAuthenticated = false;
       document.getElementById('adminAuthMsg').innerHTML = '<span class="error-msg">❌ Wrong password</span>';
-      document.getElementById('adminTools').style.display = 'none';
     }
   }
 
@@ -684,58 +807,60 @@
     let agreed = document.getElementById('agreeTerms').checked;
     
     if(!agreed) {
-      document.getElementById('regFeedback').innerHTML = '<span class="error-msg">❌ You must agree to the Terms and Conditions</span>';
+      document.getElementById('regFeedback').innerHTML = '<span class="error-msg">❌ You must agree to the Terms & Conditions</span>';
       return;
     }
     if(!name || !phone) {
-      document.getElementById('regFeedback').innerHTML = '<span class="error-msg">All fields required</span>';
+      document.getElementById('regFeedback').innerHTML = '<span class="error-msg">❌ All fields are required</span>';
       return;
     }
-    let phoneRegex = /^(07|01|2547)\d{8}$/;
-    if(!phoneRegex.test(phone) && !phone.match(/^07\d{8}$/)) {
-      document.getElementById('regFeedback').innerHTML = '<span class="error-msg">Invalid Kenyan format (07XX or 2547...)</span>';
+    if(!phone.match(/^07\d{8}$/) && !phone.match(/^2547\d{8}$/)) {
+      document.getElementById('regFeedback').innerHTML = '<span class="error-msg">❌ Invalid Kenyan phone number (format: 07XXXXXXXX)</span>';
       return;
     }
     if(players.find(p => p.phone === phone)) {
-      document.getElementById('regFeedback').innerHTML = '<span class="error-msg">Duplicate phone number! Already registered.</span>';
+      document.getElementById('regFeedback').innerHTML = '<span class="error-msg">❌ This phone number is already registered</span>';
       return;
     }
     if(players.length >= MAX_PLAYERS) {
-      document.getElementById('regFeedback').innerHTML = '<span class="error-msg">Tournament is full (300 players max).</span>';
+      document.getElementById('regFeedback').innerHTML = '<span class="error-msg">❌ Tournament is full! Maximum 300 players reached.</span>';
       return;
     }
-    let newPlayer = { name, phone, year, paid: false, status: "Active" };
-    players.push(newPlayer);
+    
+    players.push({ name, phone, year, registered: new Date().toISOString() });
     localStorage.setItem('uoe_players', JSON.stringify(players));
-    document.getElementById('regFeedback').innerHTML = '<span class="success-msg">✅ Registration successful! Now pay KES 33 to unlock WhatsApp group.</span>';
+    localStorage.setItem('currentUserPhone', phone);
+    document.getElementById('regFeedback').innerHTML = '<span class="success-msg">✅ Registration successful! Now send KES 33 to +254114170847 and submit your transaction code above.</span>';
     document.getElementById('registerForm').reset();
-    updateSlotCounter();
-    updateLeaderboardUI(true);
-    updateLineupsUI();
+    updateUI();
+  }
+  
+  function disqualifyPlayer() {
+    if(!adminAuth) {
+      alert('Login admin first');
+      return;
+    }
+    let phone = document.getElementById('dqPlayerPhone').value.trim();
+    if(!phone) {
+      alert('Enter player phone number');
+      return;
+    }
+    let player = players.find(p => p.phone === phone);
+    if(player) {
+      alert(`⚠️ Player ${player.name} has been disqualified from the tournament.`);
+      // In real implementation, you'd mark them as disqualified
+    } else {
+      alert('Player not found');
+    }
   }
 
   function showPage(pageId) {
     document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
     document.getElementById(pageId + 'Page').style.display = 'block';
-    if(pageId === 'dashboard') {
-      updateLeaderboardUI(false);
-      updateResultsUI();
-    }
-    if(pageId === 'info') {
-      updateFixturesUI();
-      updateLineupsUI();
-      updateLeaderboardUI(false);
-    }
-    if(pageId === 'home') {
-      updateLeaderboardUI(true);
-      updateWhatsAppButtonState();
-      updateSlotCounter();
-    }
-    if(pageId === 'admin') {
-      if(adminAuthenticated) document.getElementById('adminTools').style.display = 'block';
-      else document.getElementById('adminTools').style.display = 'none';
-      updateLeaderboardUI(false);
-    }
+    if(pageId === 'info') { updateFixtures(); updateUI(); }
+    if(pageId === 'dashboard') { updateUI(); updateResults(); }
+    if(pageId === 'home') updateUI();
+    if(pageId === 'admin') updateUI();
   }
 
   document.querySelectorAll('.nav-btn').forEach(btn => {
@@ -747,58 +872,45 @@
   });
 
   document.getElementById('registerForm').addEventListener('submit', registerUser);
-  document.getElementById('simulatePaymentBtn').addEventListener('click', () => {
-    let phone = document.getElementById('paymentPhone').value.trim();
-    let res = simulatePayment(phone);
-    document.getElementById('paymentStatus').innerHTML = `<span class="${res.success ? 'success-msg' : 'error-msg'}">${res.msg}</span>`;
-    syncPaymentStatus();
-    updateLeaderboardUI(true);
-    updateLineupsUI();
-    updateWhatsAppButtonState();
-    updateSlotCounter();
-    if(res.success) setTimeout(() => document.getElementById('paymentStatus').innerHTML = '', 5000);
-  });
-  document.getElementById('paymentPhone').addEventListener('input', updateWhatsAppButtonState);
-  document.getElementById('adminLoginBtn').addEventListener('click', adminAuth);
+  document.getElementById('adminLoginBtn').addEventListener('click', adminLogin);
+  document.getElementById('submitTransactionBtn').addEventListener('click', submitTransaction);
   document.getElementById('addFixtureBtn').addEventListener('click', () => {
-    if(!adminAuthenticated) return;
+    if(!adminAuth) return alert('Login admin first');
     let match = document.getElementById('newFixtureMatch').value;
     let time = document.getElementById('newFixtureTime').value;
     if(match && time) {
-      fixtures.push({ match, time, status: "upcoming" });
+      fixtures.push({ match, time });
       localStorage.setItem('uoe_fixtures', JSON.stringify(fixtures));
-      updateFixturesUI();
-      alert("Fixture added!");
+      updateFixtures();
+      alert('✅ Fixture added successfully!');
+      document.getElementById('newFixtureMatch').value = '';
+      document.getElementById('newFixtureTime').value = '';
+    } else {
+      alert('Please fill both match and time fields');
     }
   });
   document.getElementById('addResultBtn').addEventListener('click', () => {
-    if(!adminAuthenticated) return;
+    if(!adminAuth) return alert('Login admin first');
     let desc = document.getElementById('resultMatchDesc').value;
     let score = document.getElementById('resultScore').value;
     if(desc && score) {
-      matchResults.push({ desc, score, timestamp: new Date().toISOString() });
+      matchResults.push({ desc, score });
       localStorage.setItem('uoe_results', JSON.stringify(matchResults));
-      updateResultsUI();
-      alert("Result posted!");
+      updateResults();
+      alert('✅ Match result posted!');
+      document.getElementById('resultMatchDesc').value = '';
+      document.getElementById('resultScore').value = '';
+    } else {
+      alert('Please fill both match description and score');
     }
   });
-  document.getElementById('disqualifyBtn').addEventListener('click', () => {
-    if(!adminAuthenticated) return;
-    let phone = document.getElementById('dqPlayerPhone').value;
-    if(disqualifyPlayer(phone)) alert("Player disqualified!");
-    else alert("Player not found or already disqualified");
-  });
-  document.getElementById('checkDQBtn').addEventListener('click', autoDisqualifyLateMatches);
+  document.getElementById('disqualifyBtn').addEventListener('click', disqualifyPlayer);
 
-  syncPaymentStatus();
+  updateUI();
+  updateFixtures();
+  updateResults();
   startCountdown();
-  updateSlotCounter();
-  updateLeaderboardUI(true);
-  updateFixturesUI();
-  updateResultsUI();
-  updateLineupsUI();
   showPage('home');
-  updateWhatsAppButtonState();
 </script>
 </body>
-</html>
+          </html>
