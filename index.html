@@ -284,6 +284,14 @@
       border: 2px solid var(--gold);
     }
     
+    .manual-approve-box {
+      background: rgba(0, 255, 136, 0.1);
+      border-radius: 20px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      border: 2px solid var(--neon-green);
+    }
+    
     .transaction-code-input {
       font-family: monospace;
       font-size: 1.2rem;
@@ -409,7 +417,7 @@
         <div class="step">
           <div class="step-number">3</div>
           <strong>GET APPROVED</strong>
-          <p style="font-size: 0.85rem;">Submit transaction code & get verified</p>
+          <p style="font-size: 0.85rem;">Contact Admin on WhatsApp with your transaction code</p>
         </div>
       </div>
     </div>
@@ -430,7 +438,7 @@
       <p style="font-size: 0.85rem;">🎯 300 Players = KES 8,910 for the Champion!</p>
     </div>
     
-    <!-- Payment & Verification Section with YOUR Number -->
+    <!-- Payment & Verification Section -->
     <div class="card">
       <h3><i class="fab fa-whatsapp"></i> UNLOCK WHATSAPP GROUP</h3>
       <div class="payment-box">
@@ -442,22 +450,25 @@
         <p style="font-size: 0.9rem;">via M-Pesa (Send Money)</p>
         <hr style="margin: 1rem 0; border-color: var(--neon-green);">
         
-        <p><strong>📝 STEP 3: SUBMIT TRANSACTION CODE</strong></p>
-        <p style="font-size: 0.8rem;">After sending payment, enter the M-Pesa confirmation code below:</p>
-        <input type="text" id="transactionCode" class="transaction-code-input" placeholder="M-Pesa Transaction Code (e.g., QWERTY123)" style="margin-bottom: 10px;">
-        <input type="tel" id="verifyPhone" placeholder="Your registered phone number" style="margin-bottom: 10px;">
-        <button id="submitTransactionBtn" class="btn-primary">🔍 SUBMIT FOR VERIFICATION</button>
-        <div id="verificationStatus" style="margin-top: 10px;"></div>
-        <p style="font-size: 0.75rem; margin-top: 10px; color: #ffaa66;">
-          💡 Tip: After payment, copy the M-Pesa confirmation message and paste the transaction code here.
-        </p>
+        <p><strong>📝 STEP 3: GET APPROVED</strong></p>
+        <p style="font-size: 0.9rem;">After payment, contact Admin on WhatsApp with:</p>
+        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+          <li>Your registered phone number</li>
+          <li>M-Pesa transaction code</li>
+          <li>Screenshot of payment</li>
+        </ul>
+        <div style="text-align: center; margin-top: 1rem;">
+          <a href="https://wa.me/254114170847?text=I%20have%20paid%20KES%2033%20for%20eFootball%20tournament.%20My%20phone%20is%20" target="_blank" style="background: #25D366; color: white; padding: 12px 20px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: bold;">
+            <i class="fab fa-whatsapp"></i> CONTACT ADMIN ON WHATSAPP
+          </a>
+        </div>
       </div>
       
       <button id="whatsappJoinBtn" class="whatsapp-btn">
         <i class="fab fa-whatsapp"></i> 🔒 LOCKED - PAYMENT REQUIRED
       </button>
       <p style="font-size: 0.8rem; text-align: center; margin-top: 10px;">
-        ⚠️ WhatsApp unlocks AFTER admin verifies your payment via M-Pesa
+        ⚠️ WhatsApp unlocks AFTER admin verifies your payment
       </p>
     </div>
   </div>
@@ -536,24 +547,46 @@
       <button id="adminLoginBtn" class="btn-secondary">Login</button>
       <div id="adminAuthMsg"></div>
       <div id="adminTools" style="display: none; margin-top: 20px;">
-        <h3>✅ VERIFY TRANSACTIONS</h3>
-        <p style="font-size: 0.8rem; color: #ffaa66;">Check pending payments below. Approve only after confirming M-Pesa transaction.</p>
+        
+        <!-- MANUAL APPROVAL BOX - QUICK APPROVAL -->
+        <div class="manual-approve-box">
+          <h3 style="color: var(--neon-green);">✅ MANUAL APPROVAL (FASTEST)</h3>
+          <p style="font-size: 0.8rem;">Use this when players send you their payment proof on WhatsApp</p>
+          <div class="form-group">
+            <label>Player Phone Number</label>
+            <input type="tel" id="manualPhone" placeholder="07XXXXXXXX" style="margin-bottom: 10px;">
+          </div>
+          <div class="form-group">
+            <label>Player Name (Optional - auto fills if registered)</label>
+            <input type="text" id="manualName" placeholder="Player Name">
+          </div>
+          <button id="manualApproveBtn" class="btn-primary" style="background: linear-gradient(135deg, #00ff88, #00cc66);">✅ APPROVE PLAYER NOW</button>
+          <p style="font-size: 0.7rem; margin-top: 10px; color: #ffaa66;">⚠️ Only approve after confirming payment in your M-Pesa</p>
+        </div>
+        
+        <hr>
+        
+        <h3>📋 PENDING TRANSACTIONS (From Website)</h3>
         <div id="pendingTransactionsList"></div>
         <hr>
+        
         <h3>Manage Fixtures</h3>
         <input type="text" id="newFixtureMatch" placeholder="Match (e.g., Group A: John vs Mike)" style="margin-bottom: 10px; width:100%">
         <input type="text" id="newFixtureTime" placeholder="Date & Time" style="margin-bottom: 10px; width:100%">
         <button id="addFixtureBtn" class="btn-primary">➕ Add Fixture</button>
         <hr>
+        
         <h3>Post Match Results</h3>
         <input type="text" id="resultMatchDesc" placeholder="Match description" style="margin-bottom: 10px; width:100%">
         <input type="text" id="resultScore" placeholder="Score (e.g., 3-1)" style="margin-bottom: 10px; width:100%">
         <button id="addResultBtn" class="btn-primary">📢 Post Result</button>
         <hr>
+        
         <h3>Disqualify Player (18-Hour Rule)</h3>
         <input type="text" id="dqPlayerPhone" placeholder="Player phone number" style="margin-bottom: 10px; width:100%">
         <button id="disqualifyBtn" class="btn-primary">⚠️ Disqualify Player</button>
         <hr>
+        
         <p><strong>📊 Tournament Statistics:</strong></p>
         <p><strong>Registered Players:</strong> <span id="totalPlayersCount">0</span> / 300</p>
         <p><strong>Verified Paid:</strong> <span id="verifiedPaidCount">0</span></p>
@@ -562,7 +595,7 @@
       </div>
     </div>
   </div>
-  <footer>© UoE eSports Club | Winner takes 90% | Payment verification required | Contact: +254 114 170 847</footer>
+  <footer>© UoE eSports Club | Winner takes 90% | Payment verification required | Contact Admin: +254 114 170 847</footer>
 </div>
 
 <script>
@@ -625,9 +658,6 @@
     }
     leaderHtml += `</div>`;
     document.getElementById('fullLeaderboard').innerHTML = leaderHtml;
-    if(document.getElementById('leaderboardPreview')) {
-      document.getElementById('leaderboardPreview').innerHTML = leaderHtml;
-    }
     
     // Lineups (verified only)
     let verifiedPlayers = players.filter(p => verifiedPayments.some(v => v.phone === p.phone));
@@ -645,7 +675,7 @@
     document.getElementById('totalPlayersCount').innerText = players.length;
     document.getElementById('verifiedPaidCount').innerText = verifiedPayments.length;
     
-    // Update WhatsApp button
+    // Update WhatsApp button for current user
     let currentPhone = localStorage.getItem('currentUserPhone');
     let btn = document.getElementById('whatsappJoinBtn');
     if (currentPhone && verifiedPayments.some(v => v.phone === currentPhone)) {
@@ -690,7 +720,7 @@
       localStorage.setItem('uoe_verified', JSON.stringify(verifiedPayments));
       localStorage.setItem('uoe_pending_tx', JSON.stringify(pendingTransactions));
       updateUI();
-      alert(`✅ Payment VERIFIED for ${tx.name}! WhatsApp has been unlocked for them.`);
+      alert(`✅ Payment VERIFIED for ${tx.name}! WhatsApp unlocked.`);
     }
   }
   
@@ -700,46 +730,57 @@
       pendingTransactions = pendingTransactions.filter(t => t.phone !== phone);
       localStorage.setItem('uoe_pending_tx', JSON.stringify(pendingTransactions));
       updateUI();
-      alert(`❌ Payment REJECTED for ${tx.name}. They must submit a valid transaction code.`);
+      alert(`❌ Payment REJECTED for ${tx.name}.`);
     }
+  }
+  
+  // MANUAL APPROVAL FUNCTION - USE THIS!
+  function manualApprove() {
+    let phone = document.getElementById('manualPhone').value.trim();
+    let name = document.getElementById('manualName').value.trim();
+    
+    if(!phone) {
+      alert('❌ Please enter the player\'s phone number');
+      return;
+    }
+    
+    // Check if already verified
+    if(verifiedPayments.some(v => v.phone === phone)) {
+      alert('⚠️ This player is already verified!');
+      return;
+    }
+    
+    // Find player in registered list
+    let player = players.find(p => p.phone === phone);
+    let playerName = name || (player ? player.name : 'Player');
+    
+    // Add to verified
+    verifiedPayments.push({ 
+      phone: phone, 
+      name: playerName, 
+      date: new Date().toISOString(),
+      approvedBy: "Admin Manual"
+    });
+    
+    // Remove from pending if exists
+    pendingTransactions = pendingTransactions.filter(t => t.phone !== phone);
+    
+    // Save to localStorage
+    localStorage.setItem('uoe_verified', JSON.stringify(verifiedPayments));
+    localStorage.setItem('uoe_pending_tx', JSON.stringify(pendingTransactions));
+    
+    updateUI();
+    
+    alert(`✅ ${playerName} has been VERIFIED! WhatsApp now unlocked for them.`);
+    
+    // Clear inputs
+    document.getElementById('manualPhone').value = '';
+    document.getElementById('manualName').value = '';
   }
   
   window.approveTransaction = approveTransaction;
   window.rejectTransaction = rejectTransaction;
-
-  function submitTransaction() {
-    let code = document.getElementById('transactionCode').value.trim();
-    let phone = document.getElementById('verifyPhone').value.trim();
-    
-    if(!code || !phone) {
-      document.getElementById('verificationStatus').innerHTML = '<span class="error-msg">❌ Enter both transaction code and phone number</span>';
-      return;
-    }
-    
-    let player = players.find(p => p.phone === phone);
-    if(!player) {
-      document.getElementById('verificationStatus').innerHTML = '<span class="error-msg">❌ Phone number not registered. Please register first!</span>';
-      return;
-    }
-    
-    if(verifiedPayments.some(v => v.phone === phone)) {
-      document.getElementById('verificationStatus').innerHTML = '<span class="success-msg">✅ Already verified! WhatsApp is unlocked for you.</span>';
-      updateUI();
-      return;
-    }
-    
-    if(pendingTransactions.some(t => t.phone === phone)) {
-      document.getElementById('verificationStatus').innerHTML = '<span class="error-msg">⏳ You already submitted a transaction. Waiting for admin approval.</span>';
-      return;
-    }
-    
-    pendingTransactions.push({ phone, name: player.name, transactionCode: code, date: new Date().toISOString() });
-    localStorage.setItem('uoe_pending_tx', JSON.stringify(pendingTransactions));
-    document.getElementById('verificationStatus').innerHTML = '<span class="success-msg">✅ Transaction submitted! Admin will verify within 24 hours. Check back soon.</span>';
-    document.getElementById('transactionCode').value = '';
-    document.getElementById('verifyPhone').value = '';
-    updateUI();
-  }
+  window.manualApprove = manualApprove;
 
   function updateFixtures() {
     let html = `<div class="fixture-grid">`;
@@ -830,7 +871,7 @@
     players.push({ name, phone, year, registered: new Date().toISOString() });
     localStorage.setItem('uoe_players', JSON.stringify(players));
     localStorage.setItem('currentUserPhone', phone);
-    document.getElementById('regFeedback').innerHTML = '<span class="success-msg">✅ Registration successful! Now send KES 33 to +254114170847 and submit your transaction code above.</span>';
+    document.getElementById('regFeedback').innerHTML = '<span class="success-msg">✅ Registration successful! Now send KES 33 to +254114170847 and contact Admin on WhatsApp for verification.</span>';
     document.getElementById('registerForm').reset();
     updateUI();
   }
@@ -848,7 +889,6 @@
     let player = players.find(p => p.phone === phone);
     if(player) {
       alert(`⚠️ Player ${player.name} has been disqualified from the tournament.`);
-      // In real implementation, you'd mark them as disqualified
     } else {
       alert('Player not found');
     }
@@ -873,7 +913,7 @@
 
   document.getElementById('registerForm').addEventListener('submit', registerUser);
   document.getElementById('adminLoginBtn').addEventListener('click', adminLogin);
-  document.getElementById('submitTransactionBtn').addEventListener('click', submitTransaction);
+  document.getElementById('manualApproveBtn').addEventListener('click', manualApprove);
   document.getElementById('addFixtureBtn').addEventListener('click', () => {
     if(!adminAuth) return alert('Login admin first');
     let match = document.getElementById('newFixtureMatch').value;
@@ -913,4 +953,4 @@
   showPage('home');
 </script>
 </body>
-          </html>
+  </html>
