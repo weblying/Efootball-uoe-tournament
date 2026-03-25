@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>eFootball UoE Champions League | Win KES 8,910!</title>
+  <title>eFootball UoE Champions League | University of Eldoret</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -14,943 +14,776 @@
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), 
-                  url('https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1600');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      color: #fff;
+      font-family: 'Inter', sans-serif;
+      background: #0a0c15;
+      color: #e5e7eb;
       min-height: 100vh;
     }
 
     :root {
-      --neon-green: #00ff88;
-      --neon-purple: #9d4edd;
-      --neon-blue: #00d9ff;
-      --gold: #ffd700;
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --dark: #111827;
+      --darker: #0f172a;
+      --gray: #6b7280;
     }
 
     .container {
-      max-width: 1300px;
+      max-width: 1280px;
       margin: 0 auto;
       padding: 1rem 1.5rem;
     }
 
-    /* Header Banner */
-    .hero-banner {
-      background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6));
-      border-radius: 30px;
-      padding: 2rem;
+    .header {
+      background: var(--dark);
+      border-bottom: 1px solid rgba(59,130,246,0.2);
+      padding: 1rem 0;
       margin-bottom: 2rem;
-      text-align: center;
-      border: 2px solid var(--neon-green);
-      box-shadow: 0 0 30px rgba(0,255,136,0.3);
-      position: relative;
-      overflow: hidden;
     }
-    
-    .hero-banner::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(0,255,136,0.1), transparent);
-      animation: pulse 3s ease-in-out infinite;
-    }
-    
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 0.3; }
-      50% { transform: scale(1.1); opacity: 0.5; }
-    }
-    
-    .challenge-text {
-      font-family: 'Orbitron', monospace;
-      font-size: 2.5rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--gold), var(--neon-green));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: 0 0 20px rgba(255,215,0,0.5);
-      margin-bottom: 1rem;
-      position: relative;
-      z-index: 1;
-    }
-    
-    .prize-highlight {
-      font-size: 3rem;
-      font-weight: 900;
-      color: var(--gold);
-      text-shadow: 0 0 20px rgba(255,215,0,0.5);
-      position: relative;
-      z-index: 1;
-    }
-    
-    .navbar {
+
+    .header-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(10px);
-      padding: 1rem 2rem;
-      border-radius: 60px;
-      margin-bottom: 2rem;
-      border: 1px solid var(--neon-green);
     }
-    
+
     .logo h1 {
-      font-family: 'Orbitron', monospace;
       font-size: 1.5rem;
-      background: linear-gradient(135deg, var(--neon-green), var(--neon-blue));
+      font-weight: 700;
+      background: linear-gradient(135deg, #fff, var(--primary));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
-    
-    .nav-links { display: flex; gap: 0.8rem; flex-wrap: wrap; }
-    
+
+    .logo p {
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
     .nav-btn {
       background: transparent;
-      border: 1px solid var(--neon-green);
-      padding: 0.5rem 1.2rem;
-      border-radius: 40px;
-      color: var(--neon-green);
-      font-weight: 600;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      color: var(--gray);
+      font-weight: 500;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.2s;
+      font-size: 0.9rem;
     }
-    
-    .nav-btn.active, .nav-btn:hover {
-      background: var(--neon-green);
-      color: #000;
-      box-shadow: 0 0 15px var(--neon-green);
+
+    .nav-btn:hover {
+      background: rgba(59,130,246,0.1);
+      color: var(--primary);
     }
-    
-    .card {
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(10px);
-      border-radius: 28px;
-      padding: 1.8rem;
-      border: 1px solid rgba(0, 255, 136, 0.3);
-      margin-bottom: 2rem;
-      transition: transform 0.3s ease;
+
+    .nav-btn.active {
+      background: var(--primary);
+      color: white;
     }
-    
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: var(--neon-green);
-    }
-    
-    .section-title {
-      font-family: 'Orbitron', monospace;
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
-      border-left: 5px solid var(--neon-green);
-      padding-left: 1rem;
-    }
-    
-    /* Steps Styling */
-    .steps-container {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin: 1.5rem 0;
-    }
-    
-    .step {
-      flex: 1;
-      text-align: center;
-      padding: 1rem;
-      background: rgba(0, 255, 136, 0.1);
-      border-radius: 20px;
-      border: 1px solid var(--neon-green);
-    }
-    
-    .step-number {
+
+    /* Secret Admin Button */
+    .secret-admin {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
       width: 40px;
       height: 40px;
-      background: var(--neon-green);
-      color: #000;
+      background: rgba(59,130,246,0.1);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 0.5rem;
-      font-weight: bold;
-      font-size: 1.2rem;
+      cursor: pointer;
+      opacity: 0.2;
+      transition: all 0.3s;
+      z-index: 1000;
     }
-    
-    .form-group { margin-bottom: 1.2rem; }
-    
-    label {
-      font-weight: 500;
-      display: block;
-      margin-bottom: 0.4rem;
-      color: var(--neon-green);
+
+    .secret-admin:hover {
+      opacity: 0.6;
     }
-    
-    input, select, textarea {
-      width: 100%;
-      padding: 0.9rem 1rem;
-      background: rgba(10, 20, 30, 0.9);
-      border: 1px solid #2a3a55;
-      border-radius: 40px;
-      color: white;
+
+    .secret-admin i {
       font-size: 1rem;
-      outline: none;
-      transition: all 0.3s ease;
+      color: var(--gray);
     }
-    
-    input:focus, select:focus, textarea:focus {
-      border-color: var(--neon-green);
-      box-shadow: 0 0 10px var(--neon-green);
+
+    /* Admin Modal */
+    .admin-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
     }
-    
-    .btn-primary {
-      background: linear-gradient(135deg, var(--neon-green), var(--neon-blue));
+
+    .admin-modal.active {
+      display: flex;
+    }
+
+    .admin-modal-content {
+      background: var(--dark);
+      border-radius: 24px;
+      padding: 2rem;
+      max-width: 500px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      border: 1px solid var(--primary);
+    }
+
+    .admin-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .close-modal {
+      background: none;
       border: none;
-      padding: 0.9rem 1.5rem;
-      font-weight: bold;
-      border-radius: 60px;
-      color: #000;
-      font-size: 1rem;
+      color: var(--gray);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .card {
+      background: var(--dark);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--darker), var(--dark));
+      border-radius: 24px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      border: 1px solid rgba(59,130,246,0.2);
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero .prize {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--success);
+      margin: 1rem 0;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .step-card {
+      background: rgba(255,255,255,0.03);
+      border-radius: 12px;
+      padding: 1.25rem;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .step-number {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--gray);
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--darker);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      color: white;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      font-weight: 600;
       cursor: pointer;
       width: 100%;
-      font-family: 'Orbitron', monospace;
-      transition: all 0.3s ease;
+      transition: all 0.2s;
     }
-    
+
     .btn-primary:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 20px var(--neon-green);
+      background: var(--primary-dark);
+      transform: translateY(-1px);
     }
-    
+
     .btn-secondary {
-      background: transparent;
-      border: 1px solid var(--neon-green);
-      padding: 0.7rem 1rem;
-      border-radius: 40px;
-      color: var(--neon-green);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      color: white;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.2s;
     }
-    
-    .btn-secondary:hover {
-      background: var(--neon-green);
-      color: #000;
-    }
-    
+
     .whatsapp-btn {
       background: #25D366;
       color: white;
-      font-weight: bold;
       border: none;
       padding: 1rem;
-      border-radius: 60px;
+      border-radius: 12px;
       width: 100%;
-      font-size: 1.2rem;
+      font-size: 1rem;
+      font-weight: 600;
       cursor: not-allowed;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      opacity: 0.6;
-      transition: all 0.3s ease;
+      opacity: 0.5;
+      transition: all 0.2s;
     }
-    
+
     .whatsapp-btn.unlocked {
-      background: #075E54;
-      cursor: pointer;
       opacity: 1;
-      animation: glow 1s ease-in-out infinite;
+      cursor: pointer;
+      background: #075E54;
     }
-    
-    @keyframes glow {
-      0%, 100% { box-shadow: 0 0 10px #25D366; }
-      50% { box-shadow: 0 0 30px #25D366; }
+
+    .fixture-grid, .leaderboard-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
     }
-    
-    .payment-box {
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 20px;
-      padding: 1.5rem;
-      margin: 1rem 0;
-      border: 2px solid var(--gold);
-    }
-    
-    .manual-approve-box {
-      background: rgba(0, 255, 136, 0.1);
-      border-radius: 20px;
-      padding: 1.5rem;
-      margin: 1rem 0;
-      border: 2px solid var(--neon-green);
-    }
-    
-    .transaction-code-input {
-      font-family: monospace;
-      font-size: 1.2rem;
-      letter-spacing: 1px;
-    }
-    
-    .status-badge {
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.7rem;
-      font-weight: bold;
-      display: inline-block;
-    }
-    
-    .status-pending { background: #ffaa33; color: #000; }
-    .status-approved { background: #00ff88; color: #000; }
-    .status-rejected { background: #ff4444; color: #fff; }
-    
-    .counter-badge {
-      background: linear-gradient(135deg, #ff6b6b, #ee5a24);
-      border-radius: 50px;
-      padding: 0.8rem 1.5rem;
-      text-align: center;
-      font-size: 2rem;
-      font-weight: bold;
-      font-family: 'Orbitron';
-      display: inline-block;
-    }
-    
-    .prize-card {
-      background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6));
-      border-radius: 20px;
-      padding: 1.5rem;
-      text-align: center;
-      border: 2px solid var(--gold);
-    }
-    
-    .prize-amount {
-      font-size: 3rem;
-      font-weight: bold;
-      color: var(--gold);
-      font-family: 'Orbitron';
-    }
-    
-    .timer-box {
-      background: rgba(0, 0, 0, 0.8);
-      border-radius: 50px;
-      padding: 0.8rem;
-      text-align: center;
-      font-family: 'Orbitron';
-      font-size: 2rem;
-      font-weight: bold;
-      letter-spacing: 2px;
-    }
-    
-    .fixture-grid, .leaderboard-grid { display: flex; flex-direction: column; gap: 1rem; }
-    
+
     .fixture-item, .player-row {
-      background: rgba(0,0,0,0.5);
-      border-radius: 20px;
-      padding: 0.8rem 1rem;
+      background: rgba(255,255,255,0.03);
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      border-left: 4px solid var(--neon-green);
+      gap: 0.5rem;
     }
-    
-    .error-msg { color: #ff7b72; font-size: 0.8rem; margin-top: 5px; }
-    .success-msg { color: #00ff88; }
-    
-    footer { text-align: center; margin-top: 2rem; color: #aaa; }
-    
-    @media (max-width: 700px) {
-      .challenge-text { font-size: 1.5rem; }
-      .prize-highlight { font-size: 2rem; }
-      .timer-box { font-size: 1.2rem; }
-      .steps-container { flex-direction: column; }
-      .navbar { flex-direction: column; text-align: center; }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--darker);
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .timer {
+      font-family: monospace;
+      font-size: 2rem;
+      font-weight: 700;
+      background: var(--darker);
+      padding: 0.5rem;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .status-badge {
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    .status-approved { background: var(--success); color: white; }
+    .status-pending { background: var(--warning); color: black; }
+
+    .manual-approve-box {
+      background: var(--darker);
+      border-radius: 12px;
+      padding: 1rem;
+      margin: 1rem 0;
+      border: 1px solid var(--primary);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      color: var(--gray);
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h2 { font-size: 1.5rem; }
+      .hero .prize { font-size: 2rem; }
+      .timer { font-size: 1.2rem; }
     }
   </style>
 </head>
 <body>
-<div class="container">
-  <!-- Hero Banner with Challenge Text -->
-  <div class="hero-banner">
-    <div class="challenge-text">⚡ ARE YOU FIT ENOUGH TO SNATCH</div>
-    <div class="prize-highlight">KES 8,910 AWAY? ⚡</div>
-    <p style="margin-top: 1rem;">🏆 eFootball Champions League | University of Eldoret</p>
-    <p>💰 Winner Takes 90% of Prize Pool | Max 300 Players</p>
-  </div>
-  
-  <div class="navbar">
-    <div class="logo">
-      <h1>🎮 eFOOTBALL UoE</h1>
-      <p>Champions League Edition</p>
-    </div>
-    <div class="nav-links">
-      <button class="nav-btn active" data-page="home">🏠 Home</button>
-      <button class="nav-btn" data-page="register">📝 Register</button>
-      <button class="nav-btn" data-page="info">📅 Tournament Info</button>
-      <button class="nav-btn" data-page="dashboard">🏆 Dashboard</button>
-      <button class="nav-btn" data-page="admin">🔐 Admin</button>
-    </div>
-  </div>
-
-  <!-- HOME PAGE -->
-  <div id="homePage" class="page">
-    <!-- 3-Step Process -->
-    <div class="card">
-      <div class="section-title">📋 HOW TO JOIN & WIN</div>
-      <div class="steps-container">
-        <div class="step">
-          <div class="step-number">1</div>
-          <strong>REGISTER</strong>
-          <p style="font-size: 0.85rem;">Fill in your details to create account</p>
-        </div>
-        <div class="step">
-          <div class="step-number">2</div>
-          <strong>PAY KES 33</strong>
-          <p style="font-size: 0.85rem;">Send to +254 114 170 847 via M-Pesa</p>
-        </div>
-        <div class="step">
-          <div class="step-number">3</div>
-          <strong>GET APPROVED</strong>
-          <p style="font-size: 0.85rem;">Contact Admin on WhatsApp with your transaction code</p>
-        </div>
+  <div class="header">
+    <div class="header-content">
+      <div class="logo">
+        <h1>⚽ eFOOTBALL UoE</h1>
+        <p>Champions League • University of Eldoret</p>
+      </div>
+      <div class="nav-links">
+        <button class="nav-btn active" data-page="home">Home</button>
+        <button class="nav-btn" data-page="register">Register</button>
+        <button class="nav-btn" data-page="info">Tournament</button>
+        <button class="nav-btn" data-page="dashboard">Leaderboard</button>
       </div>
     </div>
-    
-    <div class="card">
-      <div style="text-align: center;">
-        <div class="counter-badge" id="slotCounter">300 Slots Available</div>
-        <div class="timer-box" id="countdownTimer">--d --h --m --s</div>
-        <p style="margin-top: 0.5rem;">🏆 Tournament starts in <span id="countdownHighlight"></span></p>
+  </div>
+
+  <!-- Secret Admin Button -->
+  <div class="secret-admin" id="secretAdminBtn">
+    <i class="fas fa-user-shield"></i>
+  </div>
+
+  <!-- Admin Modal -->
+  <div class="admin-modal" id="adminModal">
+    <div class="admin-modal-content">
+      <div class="admin-modal-header">
+        <h3><i class="fas fa-lock"></i> Admin</h3>
+        <button class="close-modal" id="closeModalBtn">&times;</button>
       </div>
-    </div>
-    
-    <div class="card prize-card">
-      <h3>💰 CURRENT PRIZE POOL</h3>
-      <div class="prize-amount" id="prizePoolDisplay">KES 0</div>
-      <div class="prize-amount" style="font-size: 2rem;" id="winnerShare">Winner Takes: KES 0</div>
-      <p>📈 Prize grows with every verified payment!</p>
-      <p style="font-size: 0.85rem;">🎯 300 Players = KES 8,910 for the Champion!</p>
-    </div>
-    
-    <!-- Payment & Verification Section -->
-    <div class="card">
-      <h3><i class="fab fa-whatsapp"></i> UNLOCK WHATSAPP GROUP</h3>
-      <div class="payment-box">
-        <p><strong>💳 STEP 2: MAKE PAYMENT</strong></p>
-        <p>Send <strong>KES 33</strong> to:</p>
-        <p style="font-size: 1.5rem; color: var(--gold); font-weight: bold;">
-          📱 <strong>+254 114 170 847</strong>
-        </p>
-        <p style="font-size: 0.9rem;">via M-Pesa (Send Money)</p>
-        <hr style="margin: 1rem 0; border-color: var(--neon-green);">
-        
-        <p><strong>📝 STEP 3: GET APPROVED</strong></p>
-        <p style="font-size: 0.9rem;">After payment, contact Admin on WhatsApp with:</p>
-        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-          <li>Your registered phone number</li>
-          <li>M-Pesa transaction code</li>
-          <li>Screenshot of payment</li>
-        </ul>
-        <div style="text-align: center; margin-top: 1rem;">
-          <a href="https://wa.me/254114170847?text=I%20have%20paid%20KES%2033%20for%20eFootball%20tournament.%20My%20phone%20is%20" target="_blank" style="background: #25D366; color: white; padding: 12px 20px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: bold;">
-            <i class="fab fa-whatsapp"></i> CONTACT ADMIN ON WHATSAPP
-          </a>
-        </div>
-      </div>
-      
-      <button id="whatsappJoinBtn" class="whatsapp-btn">
-        <i class="fab fa-whatsapp"></i> 🔒 LOCKED - PAYMENT REQUIRED
-      </button>
-      <p style="font-size: 0.8rem; text-align: center; margin-top: 10px;">
-        ⚠️ WhatsApp unlocks AFTER admin verifies your payment
-      </p>
-    </div>
-  </div>
-
-  <!-- REGISTRATION PAGE -->
-  <div id="registerPage" class="page" style="display: none;">
-    <div class="card">
-      <div class="section-title">📝 PLAYER REGISTRATION</div>
-      <form id="registerForm">
-        <div class="form-group">
-          <label>Full Name</label>
-          <input type="text" id="regName" placeholder="Enter your full name" required>
-        </div>
-        <div class="form-group">
-          <label>Phone Number</label>
-          <input type="tel" id="regPhone" placeholder="07XX XXX XXX" required>
-        </div>
-        <div class="form-group">
-          <label>Year of Study</label>
-          <select id="regYear">
-            <option>Year 1</option><option>Year 2</option><option>Year 3</option><option>Year 4</option>
-          </select>
-        </div>
-        <div class="terms-box" style="background: rgba(0,0,0,0.5); border-radius: 15px; padding: 1rem; margin: 1rem 0; max-height: 150px; overflow-y: auto;">
-          <strong>📜 TERMS & CONDITIONS</strong><br><br>
-          • This tournament is organized by University of Eldoret eSports Club - an independent student organization<br>
-          • NOT affiliated with KONAMI, eFootball, or the University Board of Eldoret<br>
-          • Entry Fee: KES 33 (must be verified by Admin)<br>
-          • Winner takes 90% of total verified payments<br>
-          • Format: UEFA Champions League style (Group Stage → Knockouts → Final)<br>
-          • Missing your scheduled match within 18 hours = automatic disqualification<br>
-          • Maximum 300 players<br>
-          • Legal action may be taken against cheaters or harassers<br>
-          • No refunds after tournament starts<br>
-          • WhatsApp group access only after payment verification
-        </div>
-        <label class="checkbox-label" style="display: flex; align-items: center; gap: 10px;">
-          <input type="checkbox" id="agreeTerms" required>
-          <span>I have read and agree to all Terms & Conditions</span>
-        </label>
-        <button type="submit" class="btn-primary">✅ REGISTER NOW (KES 33)</button>
-        <div id="regFeedback" style="margin-top: 12px;"></div>
-      </form>
-    </div>
-  </div>
-
-  <!-- TOURNAMENT INFO -->
-  <div id="infoPage" class="page" style="display: none;">
-    <div class="card">
-      <div class="section-title">📅 MATCH FIXTURES</div>
-      <div id="fixturesContainer"></div>
-    </div>
-    <div class="card">
-      <div class="section-title">👥 VERIFIED PLAYERS</div>
-      <div id="lineupsContainer"></div>
-    </div>
-  </div>
-
-  <!-- DASHBOARD -->
-  <div id="dashboardPage" class="page" style="display: none;">
-    <div class="card">
-      <div class="section-title">🏆 LEADERBOARD</div>
-      <div id="fullLeaderboard"></div>
-    </div>
-    <div class="card">
-      <div class="section-title">⚽ MATCH RESULTS</div>
-      <div id="matchResultsList"></div>
-    </div>
-  </div>
-
-  <!-- ADMIN PANEL -->
-  <div id="adminPage" class="page" style="display: none;">
-    <div class="card">
-      <div class="section-title">🔧 ADMIN CONSOLE</div>
-      <input type="password" id="adminPass" placeholder="Admin password" style="margin-bottom: 10px;">
+      <input type="password" id="adminPass" placeholder="Password" style="margin-bottom: 1rem;">
       <button id="adminLoginBtn" class="btn-secondary">Login</button>
       <div id="adminAuthMsg"></div>
-      <div id="adminTools" style="display: none; margin-top: 20px;">
-        
-        <!-- MANUAL APPROVAL BOX - QUICK APPROVAL -->
+      <div id="adminTools" style="display: none; margin-top: 1.5rem;">
         <div class="manual-approve-box">
-          <h3 style="color: var(--neon-green);">✅ MANUAL APPROVAL (FASTEST)</h3>
-          <p style="font-size: 0.8rem;">Use this when players send you their payment proof on WhatsApp</p>
-          <div class="form-group">
-            <label>Player Phone Number</label>
-            <input type="tel" id="manualPhone" placeholder="07XXXXXXXX" style="margin-bottom: 10px;">
-          </div>
-          <div class="form-group">
-            <label>Player Name (Optional - auto fills if registered)</label>
-            <input type="text" id="manualName" placeholder="Player Name">
-          </div>
-          <button id="manualApproveBtn" class="btn-primary" style="background: linear-gradient(135deg, #00ff88, #00cc66);">✅ APPROVE PLAYER NOW</button>
-          <p style="font-size: 0.7rem; margin-top: 10px; color: #ffaa66;">⚠️ Only approve after confirming payment in your M-Pesa</p>
+          <h4>✅ Approve Player</h4>
+          <input type="tel" id="manualPhone" placeholder="Phone number" style="margin-bottom: 0.5rem;">
+          <input type="text" id="manualName" placeholder="Name (optional)" style="margin-bottom: 0.5rem;">
+          <button id="manualApproveBtn" class="btn-primary">Approve</button>
         </div>
-        
-        <hr>
-        
-        <h3>📋 PENDING TRANSACTIONS (From Website)</h3>
-        <div id="pendingTransactionsList"></div>
-        <hr>
-        
-        <h3>Manage Fixtures</h3>
-        <input type="text" id="newFixtureMatch" placeholder="Match (e.g., Group A: John vs Mike)" style="margin-bottom: 10px; width:100%">
-        <input type="text" id="newFixtureTime" placeholder="Date & Time" style="margin-bottom: 10px; width:100%">
-        <button id="addFixtureBtn" class="btn-primary">➕ Add Fixture</button>
-        <hr>
-        
-        <h3>Post Match Results</h3>
-        <input type="text" id="resultMatchDesc" placeholder="Match description" style="margin-bottom: 10px; width:100%">
-        <input type="text" id="resultScore" placeholder="Score (e.g., 3-1)" style="margin-bottom: 10px; width:100%">
-        <button id="addResultBtn" class="btn-primary">📢 Post Result</button>
-        <hr>
-        
-        <h3>Disqualify Player (18-Hour Rule)</h3>
-        <input type="text" id="dqPlayerPhone" placeholder="Player phone number" style="margin-bottom: 10px; width:100%">
-        <button id="disqualifyBtn" class="btn-primary">⚠️ Disqualify Player</button>
-        <hr>
-        
-        <p><strong>📊 Tournament Statistics:</strong></p>
-        <p><strong>Registered Players:</strong> <span id="totalPlayersCount">0</span> / 300</p>
-        <p><strong>Verified Paid:</strong> <span id="verifiedPaidCount">0</span></p>
-        <p><strong>Current Prize Pool:</strong> KES <span id="adminPrizePool">0</span></p>
-        <p><strong>Winner Takes:</strong> 90% = KES <span id="adminWinnerShare">0</span></p>
+        <h4>Add Fixture</h4>
+        <input type="text" id="newFixtureMatch" placeholder="Match" style="margin-bottom: 0.5rem;">
+        <input type="text" id="newFixtureTime" placeholder="Date & Time" style="margin-bottom: 0.5rem;">
+        <button id="addFixtureBtn" class="btn-secondary">Add</button>
+        <h4 style="margin-top: 1rem;">Post Result</h4>
+        <input type="text" id="resultMatchDesc" placeholder="Match" style="margin-bottom: 0.5rem;">
+        <input type="text" id="resultScore" placeholder="Score" style="margin-bottom: 0.5rem;">
+        <button id="addResultBtn" class="btn-secondary">Post</button>
+        <p style="margin-top: 1rem;">Registered: <span id="totalPlayersCount">0</span> / 300</p>
+        <p>Confirmed: <span id="verifiedPaidCount">0</span></p>
       </div>
     </div>
   </div>
-  <footer>© UoE eSports Club | Winner takes 90% | Payment verification required | Contact Admin: +254 114 170 847</footer>
-</div>
 
-<script>
-  const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/EmMpXLEW22i71Ya4JU6dnZ";
-  
-  let players = JSON.parse(localStorage.getItem('uoe_players')) || [];
-  let pendingTransactions = JSON.parse(localStorage.getItem('uoe_pending_tx')) || [];
-  let verifiedPayments = JSON.parse(localStorage.getItem('uoe_verified')) || [];
-  let fixtures = JSON.parse(localStorage.getItem('uoe_fixtures')) || [
-    { match: "🎮 Opening Ceremony & Group Draw", time: "Tournament Start Date" },
-    { match: "⚽ Group Stage - Match Day 1", time: "Week 1 - Saturday 10:00 AM" },
-    { match: "⚽ Group Stage - Match Day 2", time: "Week 1 - Sunday 10:00 AM" },
-    { match: "⚽ Group Stage - Match Day 3", time: "Week 2 - Saturday 10:00 AM" },
-    { match: "🏆 Round of 16", time: "Week 2 - Sunday 14:00" },
-    { match: "🔥 Quarter Finals", time: "Week 3 - Saturday 14:00" },
-    { match: "💪 Semi Finals", time: "Week 3 - Sunday 14:00" },
-    { match: "👑 GRAND FINAL", time: "Week 4 - Saturday 16:00" }
-  ];
-  let matchResults = JSON.parse(localStorage.getItem('uoe_results')) || [];
+  <div class="container">
+    <!-- HOME PAGE -->
+    <div id="homePage" class="page">
+      <div class="hero">
+        <h2>🏆 UoE eFootball Champions League</h2>
+        <div class="prize" id="prizeDisplay">KES 0</div>
+        <p>Winner takes 90% • Maximum 300 players</p>
+        <div class="timer" id="countdownTimer">--d --h --m --s</div>
+        <p style="margin-top: 0.5rem;">Tournament starts in <span id="countdownHighlight"></span></p>
+      </div>
 
-  const MAX_PLAYERS = 300;
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value" id="slotCount">300</div>
+          <div>Spots Available</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="playerCount">0</div>
+          <div>Registered</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="verifiedCount">0</div>
+          <div>Confirmed</div>
+        </div>
+      </div>
 
-  function calculatePrizePool() {
-    return verifiedPayments.length * 33;
-  }
+      <div class="steps">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <strong>Register</strong>
+          <p style="font-size: 0.85rem; margin-top: 0.25rem;">Create your account</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <strong>Pay KES 33</strong>
+          <p style="font-size: 0.85rem; margin-top: 0.25rem;">Send to +254 114 170 847</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <strong>Get Confirmed</strong>
+          <p style="font-size: 0.85rem; margin-top: 0.25rem;">Admin verifies payment</p>
+        </div>
+      </div>
 
-  function updateUI() {
-    let remaining = MAX_PLAYERS - players.length;
-    document.getElementById('slotCounter').innerHTML = `🎮 ${remaining} Slots Remaining`;
-    let prize = calculatePrizePool();
-    document.getElementById('prizePoolDisplay').innerHTML = `KES ${prize}`;
-    let winnerShare = Math.floor(prize * 0.9);
-    document.getElementById('winnerShare').innerHTML = `Winner Takes: KES ${winnerShare}`;
-    if(document.getElementById('adminPrizePool')) {
-      document.getElementById('adminPrizePool').innerText = prize;
-      document.getElementById('adminWinnerShare').innerText = winnerShare;
+      <div class="card">
+        <h3><i class="fab fa-whatsapp"></i> WhatsApp Group</h3>
+        <div style="margin: 1rem 0; padding: 1rem; background: var(--darker); border-radius: 12px;">
+          <p><strong>Payment:</strong> KES 33 to <strong>+254 114 170 847</strong></p>
+          <p style="font-size: 0.8rem;">After payment, message admin on WhatsApp with your phone number and transaction code</p>
+          <div style="text-align: center; margin-top: 1rem;">
+            <a href="https://wa.me/254114170847?text=I%20have%20paid%20KES%2033%20for%20eFootball.%20My%20phone%20is%20" target="_blank" class="btn-primary" style="display: inline-block; width: auto; background: #25D366;">
+              <i class="fab fa-whatsapp"></i> Contact Admin
+            </a>
+          </div>
+        </div>
+        <button id="whatsappJoinBtn" class="whatsapp-btn">
+          <i class="fab fa-whatsapp"></i> 🔒 Locked
+        </button>
+        <p style="font-size: 0.7rem; text-align: center; margin-top: 0.5rem;">Unlocks after payment confirmation</p>
+      </div>
+    </div>
+
+    <!-- REGISTER PAGE -->
+    <div id="registerPage" class="page" style="display: none;">
+      <div class="card">
+        <div class="section-title">📝 Registration</div>
+        <form id="registerForm">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="regName" placeholder="Enter your name" required>
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" id="regPhone" placeholder="07XX XXX XXX" required>
+          </div>
+          <div class="form-group">
+            <label>Year of Study</label>
+            <select id="regYear">
+              <option>Year 1</option><option>Year 2</option><option>Year 3</option><option>Year 4</option>
+            </select>
+          </div>
+          <div style="background: var(--darker); border-radius: 12px; padding: 0.75rem; margin: 1rem 0; font-size: 0.75rem;">
+            <strong>Tournament Rules:</strong><br>
+            • UoE students only • Winner takes 90% • 18-hour match rule • Max 300 players
+          </div>
+          <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+            <input type="checkbox" id="agreeTerms" required> I agree to the tournament rules
+          </label>
+          <button type="submit" class="btn-primary">Register</button>
+          <div id="regFeedback" style="margin-top: 1rem;"></div>
+        </form>
+      </div>
+    </div>
+
+    <!-- TOURNAMENT INFO -->
+    <div id="infoPage" class="page" style="display: none;">
+      <div class="card">
+        <div class="section-title">📅 Fixtures</div>
+        <div id="fixturesContainer"></div>
+      </div>
+      <div class="card">
+        <div class="section-title">👥 Confirmed Players</div>
+        <div id="lineupsContainer"></div>
+      </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="dashboardPage" class="page" style="display: none;">
+      <div class="card">
+        <div class="section-title">🏆 Leaderboard</div>
+        <div id="fullLeaderboard"></div>
+      </div>
+      <div class="card">
+        <div class="section-title">⚽ Results</div>
+        <div id="matchResultsList"></div>
+      </div>
+    </div>
+
+    <footer>© UoE eSports Club | University of Eldoret</footer>
+  </div>
+
+  <script>
+    let players = [];
+    let verifiedPayments = [];
+    let fixtures = [];
+    let matchResults = [];
+
+    try {
+      players = JSON.parse(localStorage.getItem('uoe_players')) || [];
+      verifiedPayments = JSON.parse(localStorage.getItem('uoe_verified')) || [];
+      fixtures = JSON.parse(localStorage.getItem('uoe_fixtures')) || [
+        { match: "Opening Ceremony & Group Draw", time: "Tournament Start" },
+        { match: "Group Stage - Match Day 1", time: "Week 1 - Saturday" },
+        { match: "Group Stage - Match Day 2", time: "Week 1 - Sunday" },
+        { match: "Round of 16", time: "Week 2 - Saturday" },
+        { match: "Quarter Finals", time: "Week 2 - Sunday" },
+        { match: "Semi Finals", time: "Week 3 - Saturday" },
+        { match: "GRAND FINAL", time: "Week 3 - Sunday" }
+      ];
+      matchResults = JSON.parse(localStorage.getItem('uoe_results')) || [];
+    } catch(e) {}
+
+    const MAX_PLAYERS = 300;
+    const WHATSAPP_LINK = "https://chat.whatsapp.com/EmMpXLEW22i71Ya4JU6dnZ";
+
+    function saveData() {
+      localStorage.setItem('uoe_players', JSON.stringify(players));
+      localStorage.setItem('uoe_verified', JSON.stringify(verifiedPayments));
+      localStorage.setItem('uoe_fixtures', JSON.stringify(fixtures));
+      localStorage.setItem('uoe_results', JSON.stringify(matchResults));
     }
-    
-    // Leaderboard
-    let sorted = [...players].sort((a,b) => {
-      let aVerified = verifiedPayments.some(v => v.phone === a.phone);
-      let bVerified = verifiedPayments.some(v => v.phone === b.phone);
-      return (bVerified ? 1 : 0) - (aVerified ? 1 : 0);
-    });
-    let leaderHtml = `<div class="leaderboard-grid">`;
-    if(sorted.length === 0) {
-      leaderHtml = '<p>No players yet. Be the first to register!</p>';
-    } else {
-      sorted.forEach((p, idx) => {
-        let isVerified = verifiedPayments.some(v => v.phone === p.phone);
-        let isPending = pendingTransactions.some(tx => tx.phone === p.phone);
-        let status = isVerified ? '✅ PAID' : (isPending ? '⏳ PENDING' : '❌ NOT PAID');
-        let statusClass = isVerified ? 'status-approved' : (isPending ? 'status-pending' : '');
-        leaderHtml += `<div class="player-row">
-          <span><strong>${idx+1}.</strong> ${p.name}</span>
-          <span>${p.phone}</span>
-          <span class="status-badge ${statusClass}">${status}</span>
-        </div>`;
+
+    function calculatePrize() {
+      return verifiedPayments.length * 33;
+    }
+
+    function updateUI() {
+      document.getElementById('slotCount').innerHTML = MAX_PLAYERS - players.length;
+      document.getElementById('playerCount').innerHTML = players.length;
+      document.getElementById('verifiedCount').innerHTML = verifiedPayments.length;
+      document.getElementById('prizeDisplay').innerHTML = `KES ${calculatePrize()}`;
+      
+      let sorted = [...players].sort((a,b) => {
+        let aV = verifiedPayments.some(v => v.phone === a.phone);
+        let bV = verifiedPayments.some(v => v.phone === b.phone);
+        return (bV ? 1 : 0) - (aV ? 1 : 0);
       });
-    }
-    leaderHtml += `</div>`;
-    document.getElementById('fullLeaderboard').innerHTML = leaderHtml;
-    
-    // Lineups (verified only)
-    let verifiedPlayers = players.filter(p => verifiedPayments.some(v => v.phone === p.phone));
-    let lineupsHtml = `<p><strong>✅ Verified Players (${verifiedPlayers.length}/300):</strong></p><div class="fixture-grid">`;
-    if(verifiedPlayers.length === 0) {
-      lineupsHtml = '<p>No verified players yet. Make payment to get verified!</p>';
-    } else {
-      verifiedPlayers.forEach(p => {
-        lineupsHtml += `<div class="fixture-item">${p.name} (${p.year})</div>`;
-      });
-    }
-    lineupsHtml += `</div>`;
-    document.getElementById('lineupsContainer').innerHTML = lineupsHtml;
-    
-    document.getElementById('totalPlayersCount').innerText = players.length;
-    document.getElementById('verifiedPaidCount').innerText = verifiedPayments.length;
-    
-    // Update WhatsApp button for current user
-    let currentPhone = localStorage.getItem('currentUserPhone');
-    let btn = document.getElementById('whatsappJoinBtn');
-    if (currentPhone && verifiedPayments.some(v => v.phone === currentPhone)) {
-      btn.innerHTML = '<i class="fab fa-whatsapp"></i> ✅ JOIN WHATSAPP GROUP (UNLOCKED)';
-      btn.classList.add('unlocked');
-      btn.style.cursor = 'pointer';
-      btn.onclick = () => window.open(WHATSAPP_GROUP_LINK, '_blank');
-    } else {
-      btn.innerHTML = '<i class="fab fa-whatsapp"></i> 🔒 LOCKED - PAYMENT REQUIRED';
-      btn.classList.remove('unlocked');
-      btn.style.cursor = 'not-allowed';
-      btn.onclick = null;
-    }
-    
-    // Update pending transactions in admin
-    if (document.getElementById('pendingTransactionsList')) {
-      if (pendingTransactions.length === 0) {
-        document.getElementById('pendingTransactionsList').innerHTML = '<p>✅ No pending transactions</p>';
-      } else {
-        let pendingHtml = `<div class="fixture-grid">`;
-        pendingTransactions.forEach((tx, idx) => {
-          pendingHtml += `<div class="fixture-item">
-            <div><strong>${tx.name}</strong><br>📞 ${tx.phone}</div>
-            <div>💳 Code: <strong>${tx.transactionCode}</strong></div>
-            <div>
-              <button onclick="approveTransaction('${tx.phone}')" style="background:#00ff88; color:#000; padding:5px 10px; border-radius:10px; margin-right:5px; cursor:pointer;">✅ Approve</button>
-              <button onclick="rejectTransaction('${tx.phone}')" style="background:#ff4444; color:#fff; padding:5px 10px; border-radius:10px; cursor:pointer;">❌ Reject</button>
-            </div>
+      
+      let leaderHtml = `<div class="leaderboard-grid">`;
+      if(sorted.length === 0) leaderHtml = '<p>No players yet</p>';
+      else {
+        sorted.forEach((p, idx) => {
+          let isVerified = verifiedPayments.some(v => v.phone === p.phone);
+          leaderHtml += `<div class="player-row">
+            <span><strong>${idx+1}</strong> ${p.name}</span>
+            <span>${p.phone}</span>
+            <span class="status-badge ${isVerified ? 'status-approved' : 'status-pending'}">${isVerified ? 'Confirmed' : 'Pending'}</span>
           </div>`;
         });
-        pendingHtml += `</div>`;
-        document.getElementById('pendingTransactionsList').innerHTML = pendingHtml;
       }
+      leaderHtml += `</div>`;
+      document.getElementById('fullLeaderboard').innerHTML = leaderHtml;
+      
+      let verifiedList = players.filter(p => verifiedPayments.some(v => v.phone === p.phone));
+      let lineupsHtml = `<div class="fixture-grid">`;
+      if(verifiedList.length === 0) lineupsHtml = '<p>No confirmed players</p>';
+      else {
+        verifiedList.forEach(p => {
+          lineupsHtml += `<div class="fixture-item">${p.name} (${p.year})</div>`;
+        });
+      }
+      lineupsHtml += `</div>`;
+      document.getElementById('lineupsContainer').innerHTML = lineupsHtml;
+      
+      let currentPhone = localStorage.getItem('currentUserPhone');
+      let btn = document.getElementById('whatsappJoinBtn');
+      if(currentPhone && verifiedPayments.some(v => v.phone === currentPhone)) {
+        btn.innerHTML = '<i class="fab fa-whatsapp"></i> Join WhatsApp Group';
+        btn.classList.add('unlocked');
+        btn.onclick = () => window.open(WHATSAPP_LINK, '_blank');
+      } else {
+        btn.innerHTML = '<i class="fab fa-whatsapp"></i> 🔒 Locked';
+        btn.classList.remove('unlocked');
+        btn.onclick = null;
+      }
+      
+      document.getElementById('totalPlayersCount').innerHTML = players.length;
+      document.getElementById('verifiedPaidCount').innerHTML = verifiedPayments.length;
     }
-  }
 
-  function approveTransaction(phone) {
-    let tx = pendingTransactions.find(t => t.phone === phone);
-    if(tx) {
-      verifiedPayments.push({ phone, name: tx.name, date: new Date().toISOString() });
-      pendingTransactions = pendingTransactions.filter(t => t.phone !== phone);
-      localStorage.setItem('uoe_verified', JSON.stringify(verifiedPayments));
-      localStorage.setItem('uoe_pending_tx', JSON.stringify(pendingTransactions));
-      updateUI();
-      alert(`✅ Payment VERIFIED for ${tx.name}! WhatsApp unlocked.`);
-    }
-  }
-  
-  function rejectTransaction(phone) {
-    let tx = pendingTransactions.find(t => t.phone === phone);
-    if(tx) {
-      pendingTransactions = pendingTransactions.filter(t => t.phone !== phone);
-      localStorage.setItem('uoe_pending_tx', JSON.stringify(pendingTransactions));
-      updateUI();
-      alert(`❌ Payment REJECTED for ${tx.name}.`);
-    }
-  }
-  
-  // MANUAL APPROVAL FUNCTION - USE THIS!
-  function manualApprove() {
-    let phone = document.getElementById('manualPhone').value.trim();
-    let name = document.getElementById('manualName').value.trim();
-    
-    if(!phone) {
-      alert('❌ Please enter the player\'s phone number');
-      return;
-    }
-    
-    // Check if already verified
-    if(verifiedPayments.some(v => v.phone === phone)) {
-      alert('⚠️ This player is already verified!');
-      return;
-    }
-    
-    // Find player in registered list
-    let player = players.find(p => p.phone === phone);
-    let playerName = name || (player ? player.name : 'Player');
-    
-    // Add to verified
-    verifiedPayments.push({ 
-      phone: phone, 
-      name: playerName, 
-      date: new Date().toISOString(),
-      approvedBy: "Admin Manual"
-    });
-    
-    // Remove from pending if exists
-    pendingTransactions = pendingTransactions.filter(t => t.phone !== phone);
-    
-    // Save to localStorage
-    localStorage.setItem('uoe_verified', JSON.stringify(verifiedPayments));
-    localStorage.setItem('uoe_pending_tx', JSON.stringify(pendingTransactions));
-    
-    updateUI();
-    
-    alert(`✅ ${playerName} has been VERIFIED! WhatsApp now unlocked for them.`);
-    
-    // Clear inputs
-    document.getElementById('manualPhone').value = '';
-    document.getElementById('manualName').value = '';
-  }
-  
-  window.approveTransaction = approveTransaction;
-  window.rejectTransaction = rejectTransaction;
-  window.manualApprove = manualApprove;
-
-  function updateFixtures() {
-    let html = `<div class="fixture-grid">`;
-    fixtures.forEach(f => {
-      html += `<div class="fixture-item"><strong>${f.match}</strong> <span>📅 ${f.time}</span></div>`;
-    });
-    html += `</div>`;
-    document.getElementById('fixturesContainer').innerHTML = html;
-  }
-
-  function updateResults() {
-    let html = `<div class="fixture-grid">`;
-    if (matchResults.length === 0) {
-      html = '<p>No match results posted yet. Check back after matches start!</p>';
-    } else {
-      matchResults.forEach(r => {
-        html += `<div class="fixture-item"><span>${r.desc}</span><span class="status-badge">${r.score}</span></div>`;
+    function updateFixtures() {
+      let html = `<div class="fixture-grid">`;
+      fixtures.forEach(f => {
+        html += `<div class="fixture-item"><strong>${f.match}</strong> <span>${f.time}</span></div>`;
       });
+      html += `</div>`;
+      document.getElementById('fixturesContainer').innerHTML = html;
     }
-    html += `</div>`;
-    document.getElementById('matchResultsList').innerHTML = html;
-  }
 
-  function startCountdown() {
-    let start = new Date();
-    start.setDate(start.getDate() + 14);
-    start.setHours(18, 0, 0, 0);
-    function update() {
-      let now = new Date();
-      let diff = start - now;
-      if(diff <= 0) {
-        document.getElementById('countdownTimer').innerHTML = "🔥 TOURNAMENT LIVE! 🔥";
-        document.getElementById('countdownHighlight').innerHTML = "LIVE NOW!";
-        return;
+    function updateResults() {
+      let html = `<div class="fixture-grid">`;
+      if(matchResults.length === 0) html = '<p>No results yet</p>';
+      else {
+        matchResults.forEach(r => {
+          html += `<div class="fixture-item"><span>${r.desc}</span><span class="status-badge status-approved">${r.score}</span></div>`;
+        });
       }
-      let days = Math.floor(diff/(1000*60*60*24));
-      let hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-      let mins = Math.floor((diff%(1000*60*60))/(1000*60));
-      let secs = Math.floor((diff%(1000*60))/1000);
-      document.getElementById('countdownTimer').innerHTML = `${days}d ${hours}h ${mins}m ${secs}s`;
-      document.getElementById('countdownHighlight').innerHTML = `${days} days ${hours} hours`;
+      html += `</div>`;
+      document.getElementById('matchResultsList').innerHTML = html;
     }
-    update();
-    setInterval(update, 1000);
-  }
 
-  let adminAuth = false;
-  function adminLogin() {
-    let pass = document.getElementById('adminPass').value;
-    if(pass === 'UoE2025!') {
-      adminAuth = true;
-      document.getElementById('adminAuthMsg').innerHTML = '<span class="success-msg">✅ Admin access granted</span>';
-      document.getElementById('adminTools').style.display = 'block';
+    function startCountdown() {
+      let start = new Date();
+      start.setDate(start.getDate() + 14);
+      start.setHours(18,0,0,0);
+      function update() {
+        let now = new Date();
+        let diff = start - now;
+        if(diff <= 0) {
+          document.getElementById('countdownTimer').innerHTML = "TOURNAMENT LIVE!";
+          document.getElementById('countdownHighlight').innerHTML = "LIVE NOW";
+          return;
+        }
+        let days = Math.floor(diff/(1000*60*60*24));
+        let hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+        let mins = Math.floor((diff%(1000*60*60))/(1000*60));
+        let secs = Math.floor((diff%(1000*60))/1000);
+        document.getElementById('countdownTimer').innerHTML = `${days}d ${hours}h ${mins}m ${secs}s`;
+        document.getElementById('countdownHighlight').innerHTML = `${days} days`;
+      }
+      update();
+      setInterval(update, 1000);
+    }
+
+    function manualApprove() {
+      let phone = document.getElementById('manualPhone').value.trim();
+      if(!phone) { alert('Enter phone number'); return; }
+      if(verifiedPayments.some(v => v.phone === phone)) { alert('Already confirmed'); return; }
+      let player = players.find(p => p.phone === phone);
+      let playerName = player ? player.name : document.getElementById('manualName').value.trim() || 'Player';
+      verifiedPayments.push({ phone, name: playerName, date: new Date().toISOString() });
+      saveData();
       updateUI();
-    } else {
-      document.getElementById('adminAuthMsg').innerHTML = '<span class="error-msg">❌ Wrong password</span>';
+      alert(`✅ ${playerName} confirmed!`);
+      document.getElementById('manualPhone').value = '';
+      document.getElementById('manualName').value = '';
     }
-  }
 
-  function registerUser(e) {
-    e.preventDefault();
-    let name = document.getElementById('regName').value.trim();
-    let phone = document.getElementById('regPhone').value.trim();
-    let year = document.getElementById('regYear').value;
-    let agreed = document.getElementById('agreeTerms').checked;
+    function registerUser(e) {
+      e.preventDefault();
+      let name = document.getElementById('regName').value.trim();
+      let phone = document.getElementById('regPhone').value.trim();
+      let year = document.getElementById('regYear').value;
+      let agreed = document.getElementById('agreeTerms').checked;
+      
+      if(!agreed) { document.getElementById('regFeedback').innerHTML = '<span style="color: #ef4444;">❌ Accept rules</span>'; return; }
+      if(!name || !phone) { document.getElementById('regFeedback').innerHTML = '<span style="color: #ef4444;">❌ All fields required</span>'; return; }
+      if(!phone.match(/^07\d{8}$/)) { document.getElementById('regFeedback').innerHTML = '<span style="color: #ef4444;">❌ Invalid phone</span>'; return; }
+      if(players.find(p => p.phone === phone)) { document.getElementById('regFeedback').innerHTML = '<span style="color: #ef4444;">❌ Already registered</span>'; return; }
+      if(players.length >= MAX_PLAYERS) { document.getElementById('regFeedback').innerHTML = '<span style="color: #ef4444;">❌ Tournament full</span>'; return; }
+      
+      players.push({ name, phone, year, registered: new Date().toISOString() });
+      localStorage.setItem('currentUserPhone', phone);
+      saveData();
+      updateUI();
+      document.getElementById('regFeedback').innerHTML = '<span style="color: #10b981;">✅ Registered! Pay KES 33 to +254114170847 and contact admin</span>';
+      document.getElementById('registerForm').reset();
+    }
+
+    // Admin modal
+    let adminModal = document.getElementById('adminModal');
+    let secretBtn = document.getElementById('secretAdminBtn');
+    let closeBtn = document.getElementById('closeModalBtn');
     
-    if(!agreed) {
-      document.getElementById('regFeedback').innerHTML = '<span class="error-msg">❌ You must agree to the Terms & Conditions</span>';
-      return;
-    }
-    if(!name || !phone) {
-      document.getElementById('regFeedback').innerHTML = '<span class="error-msg">❌ All fields are required</span>';
-      return;
-    }
-    if(!phone.match(/^07\d{8}$/) && !phone.match(/^2547\d{8}$/)) {
-      document.getElementById('regFeedback').innerHTML = '<span class="error-msg">❌ Invalid Kenyan phone number (format: 07XXXXXXXX)</span>';
-      return;
-    }
-    if(players.find(p => p.phone === phone)) {
-      document.getElementById('regFeedback').innerHTML = '<span class="error-msg">❌ This phone number is already registered</span>';
-      return;
-    }
-    if(players.length >= MAX_PLAYERS) {
-      document.getElementById('regFeedback').innerHTML = '<span class="error-msg">❌ Tournament is full! Maximum 300 players reached.</span>';
-      return;
-    }
-    
-    players.push({ name, phone, year, registered: new Date().toISOString() });
-    localStorage.setItem('uoe_players', JSON.stringify(players));
-    localStorage.setItem('currentUserPhone', phone);
-    document.getElementById('regFeedback').innerHTML = '<span class="success-msg">✅ Registration successful! Now send KES 33 to +254114170847 and contact Admin on WhatsApp for verification.</span>';
-    document.getElementById('registerForm').reset();
-    updateUI();
-  }
-  
-  function disqualifyPlayer() {
-    if(!adminAuth) {
-      alert('Login admin first');
-      return;
-    }
-    let phone = document.getElementById('dqPlayerPhone').value.trim();
-    if(!phone) {
-      alert('Enter player phone number');
-      return;
-    }
-    let player = players.find(p => p.phone === phone);
-    if(player) {
-      alert(`⚠️ Player ${player.name} has been disqualified from the tournament.`);
-    } else {
-      alert('Player not found');
-    }
-  }
+    secretBtn.addEventListener('click', () => adminModal.classList.add('active'));
+    closeBtn.addEventListener('click', () => adminModal.classList.remove('active'));
+    adminModal.addEventListener('click', (e) => { if(e.target === adminModal) adminModal.classList.remove('active'); });
 
-  function showPage(pageId) {
-    document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
-    document.getElementById(pageId + 'Page').style.display = 'block';
-    if(pageId === 'info') { updateFixtures(); updateUI(); }
-    if(pageId === 'dashboard') { updateUI(); updateResults(); }
-    if(pageId === 'home') updateUI();
-    if(pageId === 'admin') updateUI();
-  }
+    let adminAuth = false;
+    function adminLogin() {
+      let pass = document.getElementById('adminPass').value;
+      if(pass === 'UoE2025!') {
+        adminAuth = true;
+        document.getElementById('adminAuthMsg').innerHTML = '<span style="color: #10b981;">✅ Access granted</span>';
+        document.getElementById('adminTools').style.display = 'block';
+      } else {
+        document.getElementById('adminAuthMsg').innerHTML = '<span style="color: #ef4444;">❌ Wrong password</span>';
+      }
+    }
 
-  document.querySelectorAll('.nav-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      showPage(btn.dataset.page);
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+      document.getElementById(pageId + 'Page').style.display = 'block';
+      if(pageId === 'info') { updateFixtures(); updateUI(); }
+      if(pageId === 'dashboard') { updateUI(); updateResults(); }
+      if(pageId === 'home') updateUI();
+    }
+
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        showPage(btn.dataset.page);
+      });
     });
-  });
 
-  document.getElementById('registerForm').addEventListener('submit', registerUser);
-  document.getElementById('adminLoginBtn').addEventListener('click', adminLogin);
-  document.getElementById('manualApproveBtn').addEventListener('click', manualApprove);
-  document.getElementById('addFixtureBtn').addEventListener('click', () => {
-    if(!adminAuth) return alert('Login admin first');
-    let match = document.getElementById('newFixtureMatch').value;
-    let time = document.getElementById('newFixtureTime').value;
-    if(match && time) {
-      fixtures.push({ match, time });
-      localStorage.setItem('uoe_fixtures', JSON.stringify(fixtures));
-      updateFixtures();
-      alert('✅ Fixture added successfully!');
-      document.getElementById('newFixtureMatch').value = '';
-      document.getElementById('newFixtureTime').value = '';
-    } else {
-      alert('Please fill both match and time fields');
-    }
-  });
-  document.getElementById('addResultBtn').addEventListener('click', () => {
-    if(!adminAuth) return alert('Login admin first');
-    let desc = document.getElementById('resultMatchDesc').value;
-    let score = document.getElementById('resultScore').value;
-    if(desc && score) {
-      matchResults.push({ desc, score });
-      localStorage.setItem('uoe_results', JSON.stringify(matchResults));
-      updateResults();
-      alert('✅ Match result posted!');
-      document.getElementById('resultMatchDesc').value = '';
-      document.getElementById('resultScore').value = '';
-    } else {
-      alert('Please fill both match description and score');
-    }
-  });
-  document.getElementById('disqualifyBtn').addEventListener('click', disqualifyPlayer);
+    document.getElementById('registerForm').addEventListener('submit', registerUser);
+    document.getElementById('adminLoginBtn').addEventListener('click', adminLogin);
+    document.getElementById('manualApproveBtn').addEventListener('click', manualApprove);
+    document.getElementById('addFixtureBtn').addEventListener('click', () => {
+      if(!adminAuth) return alert('Login first');
+      let match = document.getElementById('newFixtureMatch').value;
+      let time = document.getElementById('newFixtureTime').value;
+      if(match && time) { fixtures.push({ match, time }); saveData(); updateFixtures(); alert('Added'); }
+    });
+    document.getElementById('addResultBtn').addEventListener('click', () => {
+      if(!adminAuth) return alert('Login first');
+      let desc = document.getElementById('resultMatchDesc').value;
+      let score = document.getElementById('resultScore').value;
+      if(desc && score) { matchResults.push({ desc, score }); saveData(); updateResults(); alert('Posted'); }
+    });
 
-  updateUI();
-  updateFixtures();
-  updateResults();
-  startCountdown();
-  showPage('home');
-</script>
+    updateUI();
+    updateFixtures();
+    updateResults();
+    startCountdown();
+    showPage('home');
+  </script>
 </body>
-  </html>
+            </html>
