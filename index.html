@@ -146,7 +146,7 @@
       background: var(--dark);
       border-radius: 24px;
       padding: 2rem;
-      max-width: 500px;
+      max-width: 600px;
       width: 90%;
       max-height: 80vh;
       overflow-y: auto;
@@ -282,6 +282,10 @@
       transition: all 0.2s;
     }
 
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
     .whatsapp-btn {
       background: #25D366;
       color: white;
@@ -363,7 +367,7 @@
     .status-approved { background: var(--success); color: white; }
     .status-pending { background: var(--warning); color: black; }
 
-    .manual-approve-box {
+    .pending-box, .manual-approve-box {
       background: var(--darker);
       border-radius: 12px;
       padding: 1rem;
@@ -410,29 +414,45 @@
   <div class="admin-modal" id="adminModal">
     <div class="admin-modal-content">
       <div class="admin-modal-header">
-        <h3><i class="fas fa-lock"></i> Admin</h3>
+        <h3><i class="fas fa-lock"></i> Admin Console</h3>
         <button class="close-modal" id="closeModalBtn">&times;</button>
       </div>
       <input type="password" id="adminPass" placeholder="Password" style="margin-bottom: 1rem;">
       <button id="adminLoginBtn" class="btn-secondary">Login</button>
       <div id="adminAuthMsg"></div>
       <div id="adminTools" style="display: none; margin-top: 1.5rem;">
+        
+        <!-- PENDING TRANSACTIONS (MAIN OPTION) -->
+        <div class="pending-box">
+          <h4>📋 Pending Transactions</h4>
+          <p style="font-size: 0.8rem;">Players who submitted their transaction code</p>
+          <div id="pendingTransactionsList"></div>
+        </div>
+        
+        <!-- MANUAL APPROVAL (BACKUP OPTION) -->
         <div class="manual-approve-box">
-          <h4>✅ Approve Player</h4>
+          <h4>✅ Manual Approval (Backup)</h4>
+          <p style="font-size: 0.8rem;">Use this if player didn't submit code</p>
           <input type="tel" id="manualPhone" placeholder="Phone number" style="margin-bottom: 0.5rem;">
           <input type="text" id="manualName" placeholder="Name (optional)" style="margin-bottom: 0.5rem;">
-          <button id="manualApproveBtn" class="btn-primary">Approve</button>
+          <button id="manualApproveBtn" class="btn-primary">Approve Player</button>
         </div>
-        <h4>Add Fixture</h4>
+        
+        <hr style="margin: 1rem 0; border-color: rgba(255,255,255,0.1);">
+        
+        <h4>Manage Fixtures</h4>
         <input type="text" id="newFixtureMatch" placeholder="Match" style="margin-bottom: 0.5rem;">
         <input type="text" id="newFixtureTime" placeholder="Date & Time" style="margin-bottom: 0.5rem;">
-        <button id="addFixtureBtn" class="btn-secondary">Add</button>
-        <h4 style="margin-top: 1rem;">Post Result</h4>
+        <button id="addFixtureBtn" class="btn-secondary">Add Fixture</button>
+        
+        <h4 style="margin-top: 1rem;">Post Results</h4>
         <input type="text" id="resultMatchDesc" placeholder="Match" style="margin-bottom: 0.5rem;">
         <input type="text" id="resultScore" placeholder="Score" style="margin-bottom: 0.5rem;">
-        <button id="addResultBtn" class="btn-secondary">Post</button>
+        <button id="addResultBtn" class="btn-secondary">Post Result</button>
+        
         <p style="margin-top: 1rem;">Registered: <span id="totalPlayersCount">0</span> / 300</p>
         <p>Confirmed: <span id="verifiedPaidCount">0</span></p>
+        <p>Prize Pool: KES <span id="adminPrizePool">0</span></p>
       </div>
     </div>
   </div>
@@ -476,8 +496,8 @@
         </div>
         <div class="step-card">
           <div class="step-number">03</div>
-          <strong>Get Confirmed</strong>
-          <p style="font-size: 0.85rem; margin-top: 0.25rem;">Admin verifies payment</p>
+          <strong>Submit Transaction Code</strong>
+          <p style="font-size: 0.85rem; margin-top: 0.25rem;">Get confirmed by admin</p>
         </div>
       </div>
 
@@ -485,17 +505,21 @@
         <h3><i class="fab fa-whatsapp"></i> WhatsApp Group</h3>
         <div style="margin: 1rem 0; padding: 1rem; background: var(--darker); border-radius: 12px;">
           <p><strong>Payment:</strong> KES 33 to <strong>+254 114 170 847</strong></p>
-          <p style="font-size: 0.8rem;">After payment, message admin on WhatsApp with your phone number and transaction code</p>
-          <div style="text-align: center; margin-top: 1rem;">
-            <a href="https://wa.me/254114170847?text=I%20have%20paid%20KES%2033%20for%20eFootball.%20My%20phone%20is%20" target="_blank" class="btn-primary" style="display: inline-block; width: auto; background: #25D366;">
-              <i class="fab fa-whatsapp"></i> Contact Admin
-            </a>
+          <div class="form-group" style="margin-top: 1rem;">
+            <label>Transaction Code</label>
+            <input type="text" id="transactionCode" placeholder="M-Pesa transaction code (e.g., QWERTY123)">
           </div>
+          <div class="form-group">
+            <label>Your Phone Number</label>
+            <input type="tel" id="submitPhone" placeholder="Registered phone number">
+          </div>
+          <button id="submitTransactionBtn" class="btn-primary">Submit for Verification</button>
+          <div id="submitStatus" style="margin-top: 0.5rem; font-size: 0.8rem;"></div>
         </div>
         <button id="whatsappJoinBtn" class="whatsapp-btn">
           <i class="fab fa-whatsapp"></i> 🔒 Locked
         </button>
-        <p style="font-size: 0.7rem; text-align: center; margin-top: 0.5rem;">Unlocks after payment confirmation</p>
+        <p style="font-size: 0.7rem; text-align: center; margin-top: 0.5rem;">Unlocks after admin approves your transaction</p>
       </div>
     </div>
 
@@ -560,12 +584,14 @@
 
   <script>
     let players = [];
+    let pendingTransactions = [];
     let verifiedPayments = [];
     let fixtures = [];
     let matchResults = [];
 
     try {
       players = JSON.parse(localStorage.getItem('uoe_players')) || [];
+      pendingTransactions = JSON.parse(localStorage.getItem('uoe_pending_tx')) || [];
       verifiedPayments = JSON.parse(localStorage.getItem('uoe_verified')) || [];
       fixtures = JSON.parse(localStorage.getItem('uoe_fixtures')) || [
         { match: "Opening Ceremony & Group Draw", time: "Tournament Start" },
@@ -584,6 +610,7 @@
 
     function saveData() {
       localStorage.setItem('uoe_players', JSON.stringify(players));
+      localStorage.setItem('uoe_pending_tx', JSON.stringify(pendingTransactions));
       localStorage.setItem('uoe_verified', JSON.stringify(verifiedPayments));
       localStorage.setItem('uoe_fixtures', JSON.stringify(fixtures));
       localStorage.setItem('uoe_results', JSON.stringify(matchResults));
@@ -598,6 +625,7 @@
       document.getElementById('playerCount').innerHTML = players.length;
       document.getElementById('verifiedCount').innerHTML = verifiedPayments.length;
       document.getElementById('prizeDisplay').innerHTML = `KES ${calculatePrize()}`;
+      document.getElementById('adminPrizePool').innerHTML = calculatePrize();
       
       let sorted = [...players].sort((a,b) => {
         let aV = verifiedPayments.some(v => v.phone === a.phone);
@@ -610,10 +638,13 @@
       else {
         sorted.forEach((p, idx) => {
           let isVerified = verifiedPayments.some(v => v.phone === p.phone);
+          let isPending = pendingTransactions.some(tx => tx.phone === p.phone);
+          let status = isVerified ? 'Confirmed' : (isPending ? 'Pending' : 'Not Paid');
+          let statusClass = isVerified ? 'status-approved' : (isPending ? 'status-pending' : '');
           leaderHtml += `<div class="player-row">
             <span><strong>${idx+1}</strong> ${p.name}</span>
             <span>${p.phone}</span>
-            <span class="status-badge ${isVerified ? 'status-approved' : 'status-pending'}">${isVerified ? 'Confirmed' : 'Pending'}</span>
+            <span class="status-badge ${statusClass}">${status}</span>
           </div>`;
         });
       }
@@ -645,6 +676,101 @@
       
       document.getElementById('totalPlayersCount').innerHTML = players.length;
       document.getElementById('verifiedPaidCount').innerHTML = verifiedPayments.length;
+      
+      // Update pending transactions list in admin
+      if (document.getElementById('pendingTransactionsList')) {
+        if (pendingTransactions.length === 0) {
+          document.getElementById('pendingTransactionsList').innerHTML = '<p>✅ No pending transactions</p>';
+        } else {
+          let pendingHtml = `<div class="fixture-grid">`;
+          pendingTransactions.forEach((tx, idx) => {
+            pendingHtml += `<div class="fixture-item">
+              <div><strong>${tx.name}</strong><br>📞 ${tx.phone}</div>
+              <div>💳 Code: <strong>${tx.transactionCode}</strong></div>
+              <div>
+                <button onclick="approveTransaction('${tx.phone}')" style="background:#10b981; color:white; padding:5px 10px; border-radius:8px; margin-right:5px; cursor:pointer;">✅ Approve</button>
+                <button onclick="rejectTransaction('${tx.phone}')" style="background:#ef4444; color:white; padding:5px 10px; border-radius:8px; cursor:pointer;">❌ Reject</button>
+              </div>
+            </div>`;
+          });
+          pendingHtml += `</div>`;
+          document.getElementById('pendingTransactionsList').innerHTML = pendingHtml;
+        }
+      }
+    }
+
+    function approveTransaction(phone) {
+      let tx = pendingTransactions.find(t => t.phone === phone);
+      if(tx) {
+        verifiedPayments.push({ phone, name: tx.name, date: new Date().toISOString() });
+        pendingTransactions = pendingTransactions.filter(t => t.phone !== phone);
+        saveData();
+        updateUI();
+        alert(`✅ ${tx.name} verified! WhatsApp unlocked.`);
+      }
+    }
+    
+    function rejectTransaction(phone) {
+      let tx = pendingTransactions.find(t => t.phone === phone);
+      if(tx) {
+        pendingTransactions = pendingTransactions.filter(t => t.phone !== phone);
+        saveData();
+        updateUI();
+        alert(`❌ Rejected ${tx.name}. They need to submit again.`);
+      }
+    }
+    
+    function manualApprove() {
+      let phone = document.getElementById('manualPhone').value.trim();
+      let name = document.getElementById('manualName').value.trim();
+      
+      if(!phone) { alert('Enter phone number'); return; }
+      if(verifiedPayments.some(v => v.phone === phone)) { alert('Already confirmed'); return; }
+      
+      let player = players.find(p => p.phone === phone);
+      let playerName = name || (player ? player.name : 'Player');
+      
+      verifiedPayments.push({ phone, name: playerName, date: new Date().toISOString() });
+      pendingTransactions = pendingTransactions.filter(t => t.phone !== phone);
+      saveData();
+      updateUI();
+      alert(`✅ ${playerName} confirmed!`);
+      document.getElementById('manualPhone').value = '';
+      document.getElementById('manualName').value = '';
+    }
+
+    function submitTransaction() {
+      let code = document.getElementById('transactionCode').value.trim();
+      let phone = document.getElementById('submitPhone').value.trim();
+      
+      if(!code || !phone) {
+        document.getElementById('submitStatus').innerHTML = '<span style="color: #ef4444;">❌ Enter both code and phone number</span>';
+        return;
+      }
+      
+      let player = players.find(p => p.phone === phone);
+      if(!player) {
+        document.getElementById('submitStatus').innerHTML = '<span style="color: #ef4444;">❌ Phone not registered. Register first!</span>';
+        return;
+      }
+      
+      if(verifiedPayments.some(v => v.phone === phone)) {
+        document.getElementById('submitStatus').innerHTML = '<span style="color: #10b981;">✅ Already verified!</span>';
+        updateUI();
+        return;
+      }
+      
+      if(pendingTransactions.some(t => t.phone === phone)) {
+        document.getElementById('submitStatus').innerHTML = '<span style="color: #f59e0b;">⏳ Already submitted. Waiting for admin.</span>';
+        return;
+      }
+      
+      pendingTransactions.push({ phone, name: player.name, transactionCode: code, date: new Date().toISOString() });
+      saveData();
+      document.getElementById('submitStatus').innerHTML = '<span style="color: #10b981;">✅ Submitted! Admin will verify soon.</span>';
+      document.getElementById('transactionCode').value = '';
+      document.getElementById('submitPhone').value = '';
+      updateUI();
     }
 
     function updateFixtures() {
@@ -691,20 +817,6 @@
       setInterval(update, 1000);
     }
 
-    function manualApprove() {
-      let phone = document.getElementById('manualPhone').value.trim();
-      if(!phone) { alert('Enter phone number'); return; }
-      if(verifiedPayments.some(v => v.phone === phone)) { alert('Already confirmed'); return; }
-      let player = players.find(p => p.phone === phone);
-      let playerName = player ? player.name : document.getElementById('manualName').value.trim() || 'Player';
-      verifiedPayments.push({ phone, name: playerName, date: new Date().toISOString() });
-      saveData();
-      updateUI();
-      alert(`✅ ${playerName} confirmed!`);
-      document.getElementById('manualPhone').value = '';
-      document.getElementById('manualName').value = '';
-    }
-
     function registerUser(e) {
       e.preventDefault();
       let name = document.getElementById('regName').value.trim();
@@ -722,11 +834,14 @@
       localStorage.setItem('currentUserPhone', phone);
       saveData();
       updateUI();
-      document.getElementById('regFeedback').innerHTML = '<span style="color: #10b981;">✅ Registered! Pay KES 33 to +254114170847 and contact admin</span>';
+      document.getElementById('regFeedback').innerHTML = '<span style="color: #10b981;">✅ Registered! Pay KES 33 and submit your transaction code above.</span>';
       document.getElementById('registerForm').reset();
     }
 
     // Admin modal
+    window.approveTransaction = approveTransaction;
+    window.rejectTransaction = rejectTransaction;
+    
     let adminModal = document.getElementById('adminModal');
     let secretBtn = document.getElementById('secretAdminBtn');
     let closeBtn = document.getElementById('closeModalBtn');
@@ -742,6 +857,7 @@
         adminAuth = true;
         document.getElementById('adminAuthMsg').innerHTML = '<span style="color: #10b981;">✅ Access granted</span>';
         document.getElementById('adminTools').style.display = 'block';
+        updateUI();
       } else {
         document.getElementById('adminAuthMsg').innerHTML = '<span style="color: #ef4444;">❌ Wrong password</span>';
       }
@@ -766,6 +882,7 @@
     document.getElementById('registerForm').addEventListener('submit', registerUser);
     document.getElementById('adminLoginBtn').addEventListener('click', adminLogin);
     document.getElementById('manualApproveBtn').addEventListener('click', manualApprove);
+    document.getElementById('submitTransactionBtn').addEventListener('click', submitTransaction);
     document.getElementById('addFixtureBtn').addEventListener('click', () => {
       if(!adminAuth) return alert('Login first');
       let match = document.getElementById('newFixtureMatch').value;
@@ -786,4 +903,4 @@
     showPage('home');
   </script>
 </body>
-            </html>
+                                       </html>
